@@ -129,12 +129,12 @@ h1 {
     margin-top:15px;
 }
 
-/* FIXED BUTTON CONTAINER */
 .speed-btn {
     width:78px;
     height:50px;
 
     position:relative;
+    overflow:visible;
 
     font-family:"Sarpanch";
     font-size:12px;
@@ -151,8 +151,6 @@ h1 {
     background:rgba(10,15,25,0.85);
     border:1px solid rgba(255,255,255,0.6);
     cursor:pointer;
-
-    overflow:visible; /* IMPORTANT FIX */
 }
 
 .speed-btn:hover,
@@ -161,46 +159,17 @@ h1 {
     color:black;
 }
 
-/* CORNERS FOR SPEED BUTTONS */
 .btn-corner {
     position:absolute;
     width:12px;
     height:12px;
     pointer-events:none;
-    z-index:10;
 }
 
-/* top-left */
-.btn-corner.tl {
-    top:-2px;
-    left:-2px;
-    border-top:2px solid white;
-    border-left:2px solid white;
-}
-
-/* top-right */
-.btn-corner.tr {
-    top:-2px;
-    right:-2px;
-    border-top:2px solid white;
-    border-right:2px solid white;
-}
-
-/* bottom-left */
-.btn-corner.bl {
-    bottom:-2px;
-    left:-2px;
-    border-bottom:2px solid white;
-    border-left:2px solid white;
-}
-
-/* bottom-right */
-.btn-corner.br {
-    bottom:-2px;
-    right:-2px;
-    border-bottom:2px solid white;
-    border-right:2px solid white;
-}
+.btn-corner.tl { top:-2px; left:-2px; border-top:2px solid white; border-left:2px solid white; }
+.btn-corner.tr { top:-2px; right:-2px; border-top:2px solid white; border-right:2px solid white; }
+.btn-corner.bl { bottom:-2px; left:-2px; border-bottom:2px solid white; border-left:2px solid white; }
+.btn-corner.br { bottom:-2px; right:-2px; border-bottom:2px solid white; border-right:2px solid white; }
 
 /* LOG PANEL */
 #logPanel {
@@ -219,30 +188,7 @@ h1 {
     gap:10px;
 
     padding-right:6px;
-
     scrollbar-gutter: stable;
-}
-
-#log::-webkit-scrollbar {
-    width:6px;
-}
-
-#log::-webkit-scrollbar-track {
-    background:rgba(255,255,255,0.05);
-}
-
-#log::-webkit-scrollbar-thumb {
-    background:rgba(255,255,255,0.25);
-    border-radius:10px;
-}
-
-#log::-webkit-scrollbar-thumb:hover {
-    background:rgba(255,255,255,0.4);
-}
-
-#log {
-    scrollbar-width: thin;
-    scrollbar-color: rgba(255,255,255,0.25) rgba(255,255,255,0.05);
 }
 
 /* LOG ROW */
@@ -262,51 +208,7 @@ h1 {
 
     font-size:14px;
     letter-spacing:1px;
-
     overflow:hidden;
-}
-
-.log-row::before {
-    content:"";
-    position:absolute;
-    top:-1px;
-    left:-1px;
-    width:16px;
-    height:16px;
-    border-top:2px solid white;
-    border-left:2px solid white;
-}
-
-.log-row::after {
-    content:"";
-    position:absolute;
-    top:-1px;
-    right:-1px;
-    width:16px;
-    height:16px;
-    border-top:2px solid white;
-    border-right:2px solid white;
-}
-
-.log-row .bl,
-.log-row .br {
-    position:absolute;
-    width:16px;
-    height:16px;
-}
-
-.log-row .bl {
-    bottom:-1px;
-    left:-1px;
-    border-bottom:2px solid white;
-    border-left:2px solid white;
-}
-
-.log-row .br {
-    bottom:-1px;
-    right:-1px;
-    border-bottom:2px solid white;
-    border-right:2px solid white;
 }
 
 .log-success { color:#66ff99; }
@@ -317,7 +219,7 @@ h1 {
     font-size:12px;
 }
 
-/* HUD */
+/* SOLS LOGO */
 .sols-logo {
     position:fixed;
     left:25px;
@@ -327,6 +229,7 @@ h1 {
     z-index:9999;
 }
 
+/* 🔥 FIXED DISCLAIMER */
 .disclaimer {
     position:fixed;
     bottom:15px;
@@ -335,6 +238,17 @@ h1 {
     font-size:14px;
     color:rgba(255,255,255,0.7);
     z-index:9999;
+    text-align:center;
+}
+
+.disclaimer a {
+    color:white;
+    text-decoration:none;
+    font-weight:700;
+}
+
+.disclaimer a:hover {
+    text-shadow:0 0 10px white;
 }
 
 </style>
@@ -347,7 +261,7 @@ h1 {
 <div class="corner left"></div>
 <div class="corner right"></div>
 
-<h1>Eden RNG Simulator</h1>
+<h1>EDEN RNG SIMULATOR</h1>
 
 <div class="subtitle">
 1 / 50,000 CHANCE<br>
@@ -408,8 +322,9 @@ ROLL EVERY 2 MINUTES
 
 <img src="solsrnglogo.png" class="sols-logo">
 
+<!-- UPDATED DISCORD LINK -->
 <div class="disclaimer">
-Fan-made simulator by @ruinoxa • Not affiliated with Sol's RNG
+Fan-made simulator by <a href="https://discord.com/users/542875554429272094" target="_blank">@ruinoxa</a> • Not affiliated with Sol's RNG
 </div>
 
 <script>
@@ -441,9 +356,6 @@ function RNG() {
     row.className = "log-row " + (win ? "log-success" : "log-fail");
 
     row.innerHTML = `
-        <div class="bl"></div>
-        <div class="br"></div>
-
         <div>
             <b>${win ? "SPAWNED" : "FAILED"}</b>
             | #${attempts}
