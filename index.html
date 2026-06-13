@@ -122,7 +122,7 @@ h1 {
     margin:20px;
 }
 
-/* SPEED BUTTONS */
+/* SPEED */
 .speed-buttons {
     display:flex;
     justify-content:space-between;
@@ -139,14 +139,14 @@ h1 {
     border:1px solid rgba(255,255,255,0.6);
     cursor:pointer;
 
-    line-height:1.2;
-    font-weight:700;
-    letter-spacing:1px;
-
     display:flex;
     flex-direction:column;
     justify-content:center;
     align-items:center;
+
+    line-height:1.2;
+    font-weight:700;
+    letter-spacing:1px;
 }
 
 .speed-btn:hover,
@@ -163,6 +163,7 @@ h1 {
 
 #log {
     height:450px;
+
     overflow-y:auto;
     overflow-x:hidden;
 
@@ -171,16 +172,18 @@ h1 {
     gap:10px;
 
     padding-right:10px;
-    box-sizing:border-box;
 }
 
-/* scrollbar */
+/* ===== SCROLLBAR FIX (IMPORTANT) ===== */
+
+/* Chrome / Edge / Safari */
 #log::-webkit-scrollbar {
     width:6px;
 }
 
 #log::-webkit-scrollbar-track {
     background:rgba(255,255,255,0.05);
+    border-radius:10px;
 }
 
 #log::-webkit-scrollbar-thumb {
@@ -190,6 +193,12 @@ h1 {
 
 #log::-webkit-scrollbar-thumb:hover {
     background:rgba(255,255,255,0.4);
+}
+
+/* Firefox */
+#log {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255,255,255,0.25) rgba(255,255,255,0.05);
 }
 
 /* LOG ROW */
@@ -302,23 +311,10 @@ ROLL EVERY 2 MINUTES
 <div id="timer">02:00</div>
 
 <div class="speed-buttons">
-
-<button class="speed-btn active" onclick="setSpeed(1,this)">
-1X<br>SPEED
-</button>
-
-<button class="speed-btn" onclick="setSpeed(2,this)">
-2X<br>SPEED
-</button>
-
-<button class="speed-btn" onclick="setSpeed(5,this)">
-5X<br>SPEED
-</button>
-
-<button class="speed-btn" onclick="setSpeed(10,this)">
-10X<br>SPEED
-</button>
-
+<button class="speed-btn active" onclick="setSpeed(1,this)">1X<br>SPEED</button>
+<button class="speed-btn" onclick="setSpeed(2,this)">2X<br>SPEED</button>
+<button class="speed-btn" onclick="setSpeed(5,this)">5X<br>SPEED</button>
+<button class="speed-btn" onclick="setSpeed(10,this)">10X<br>SPEED</button>
 </div>
 
 <div class="label">LAST RESULT</div>
