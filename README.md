@@ -1,56 +1,58 @@
-# 🌌 Eden RNG Simulator
+# Eden RNG Simulator
 
-This project is a simulation tool only and does not track or report real Eden spawn rates.
+A fan-made RNG simulator inspired by **Sol's RNG** on Roblox.
 
-It is designed for testing, experimenting, and simulating Eden-related mechanics in a controlled environment. Any values, outcomes, or rates shown are purely generated within the simulator and should not be interpreted as real in-game tracking data.
-
----
-
-## ⚠️ Important Note
-
-This tool does not:
-
-- Track real spawn rates  
-- Collect live or server-based data  
-- Reflect actual in-game statistics  
-
-All outputs are for simulation purposes only.
+> Fan-made project by @ruinoxa  
+> Not affiliated with Sol's RNG.
 
 ---
 
-## 📌 Update Log
+# 📌 Latest Version Update
 
-### v1.1 — UI & System Improvements
+## Version: 1.0.0 (Latest)
 
-⚡ **Improved speed system**
-- Speed buttons now properly affect simulation timing
-- Fixed inconsistent timer behavior at higher multipliers
+### ✨ Major Updates
 
-⏱️ **Real-time timer system overhaul**
-- Timer now runs smoothly without skipping values
-- Proper synchronization between countdown and roll system
-
-📜 **Enhanced log system**
-- Logs now display full details (date, time, roll value)
-- Clear success/fail formatting
-- Improved readability and structure
-
-🎨 **UI styling upgrades (Sol’s RNG inspired theme)**
-- Added corner frame styling similar to Sol’s RNG UI design
-- Improved panel layout consistency
-- Enhanced glow and text-shadow effects
-
-🖼️ **Branding additions**
-- Added Sol’s RNG logo display in UI
-- Added bottom disclaimer credit text
-- Improved visual alignment of HUD elements
+- Added complete Eden RNG Simulator interface
+- Added RNG rolling system with:
+  - 1 / 50,000 Eden spawn chance
+  - 2 minute default roll timer
+  - Attempt tracking system
+  - Roll number display
+- Added speed controls:
+  - 1X SPEED
+  - 2X SPEED
+  - 5X SPEED
+  - 10X SPEED
 
 ---
 
-## 🔮 Planned Features
+# 🎨 UI Improvements
 
-- 🎰 Pity system (guaranteed rare after X fails)
-- ✨ Roll animation system
-- 🔊 Sound effects for rolls
-- 💾 Save system (localStorage support)
-- 📊 Rarity tier system (Common → Eden)
+## HUD Corner System
+
+- Reworked all UI corner designs
+- Added consistent L-shaped HUD corners to:
+
+  - Main Eden panel
+  - RNG log panel
+  - Speed buttons
+  - Discord server button
+  - RNG attempt logs
+
+- Changed corners from floating/outside style to edge-connected style
+- Improved Sol's RNG inspired interface appearance
+
+---
+
+# 📜 RNG Log Updates
+
+### Added:
+
+- Live attempt logging
+- Attempt number tracking
+- Roll number display
+- Timestamp display
+- Success/failure status
+
+Example:
