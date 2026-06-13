@@ -122,7 +122,7 @@ h1 {
     margin:20px;
 }
 
-/* SPEED */
+/* SPEED BUTTONS */
 .speed-buttons {
     display:flex;
     justify-content:space-between;
@@ -132,21 +132,22 @@ h1 {
 .speed-btn {
     width:78px;
     height:50px;
+
     font-family:"Sarpanch";
     font-size:12px;
-    color:white;
-    background:rgba(10,15,25,0.85);
-    border:1px solid rgba(255,255,255,0.6);
-    cursor:pointer;
+    font-weight:700;
+    letter-spacing:1px;
+    line-height:1.2;
 
     display:flex;
     flex-direction:column;
     justify-content:center;
     align-items:center;
 
-    line-height:1.2;
-    font-weight:700;
-    letter-spacing:1px;
+    color:white;
+    background:rgba(10,15,25,0.85);
+    border:1px solid rgba(255,255,255,0.6);
+    cursor:pointer;
 }
 
 .speed-btn:hover,
@@ -155,28 +156,33 @@ h1 {
     color:black;
 }
 
-/* LOG PANEL */
+/* LOG PANEL (FIXED STRUCTURE) */
 #logPanel {
     width:450px;
     height:560px;
+
+    overflow:hidden; /* IMPORTANT: prevents visual shift */
 }
 
+/* LOG AREA */
 #log {
     height:450px;
 
-    overflow-y:auto;
+    overflow-y:scroll; /* always reserve scrollbar space */
     overflow-x:hidden;
 
     display:flex;
     flex-direction:column;
     gap:10px;
 
-    padding-right:10px;
+    padding-right:6px;
+    width:100%;
+    box-sizing:border-box;
+
+    scrollbar-gutter: stable; /* KEY FIX (modern browsers) */
 }
 
-/* ===== SCROLLBAR FIX (IMPORTANT) ===== */
-
-/* Chrome / Edge / Safari */
+/* SCROLLBAR STYLE */
 #log::-webkit-scrollbar {
     width:6px;
 }
@@ -195,14 +201,17 @@ h1 {
     background:rgba(255,255,255,0.4);
 }
 
-/* Firefox */
 #log {
     scrollbar-width: thin;
     scrollbar-color: rgba(255,255,255,0.25) rgba(255,255,255,0.05);
 }
 
-/* LOG ROW */
+/* LOG ROW (NO SHRINK FIX) */
 .log-row {
+    width:100%;
+    min-width:0;
+    flex-shrink:0;
+
     position:relative;
     display:flex;
     justify-content:space-between;
@@ -219,6 +228,7 @@ h1 {
     overflow:hidden;
 }
 
+/* LOG CORNERS */
 .log-row::before {
     content:"";
     position:absolute;
@@ -311,10 +321,12 @@ ROLL EVERY 2 MINUTES
 <div id="timer">02:00</div>
 
 <div class="speed-buttons">
+
 <button class="speed-btn active" onclick="setSpeed(1,this)">1X<br>SPEED</button>
 <button class="speed-btn" onclick="setSpeed(2,this)">2X<br>SPEED</button>
 <button class="speed-btn" onclick="setSpeed(5,this)">5X<br>SPEED</button>
 <button class="speed-btn" onclick="setSpeed(10,this)">10X<br>SPEED</button>
+
 </div>
 
 <div class="label">LAST RESULT</div>
