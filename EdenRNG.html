@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Eden RNG Simulator</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Sarpanch:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+
+body {
+
+    margin:0;
+
+    min-height:100vh;
+
+    font-family:"Sarpanch", sans-serif;
+
+    color:white;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:50px;
+
+
+    background:
+
+    linear-gradient(
+        rgba(0,0,0,0.65),
+        rgba(0,0,0,0.65)
+    ),
+
+    url("background.png");
+
+
+    background-size:cover;
+
+    background-position:center;
+
+}
+
+
+/* Panels */
+
+.panel {
+
+    background:rgba(5,10,20,0.75);
+
+    border:1px solid rgba(255,255,255,0.35);
+
+    border-radius:18px;
+
+    padding:30px;
+
+    backdrop-filter:blur(6px);
+
+    box-shadow:
+
+    0 0 30px rgba(0,0,0,0.8);
+
+}
+
+
+
+/* Left */
+
+#game {
+
+    width:430px;
+
+    text-align:center;
+
+}
+
+
+
+h1 {
+
+    font-size:45px;
+
+    letter-spacing:8px;
+
+    font-weight:900;
+
+    text-shadow:
+
+    0 0 15px white;
+
+}
+
+
+
+.subtitle {
+
+    font-size:18px;
+
+    letter-spacing:2px;
+
+}
+
+
+
+/* Timer */
+
+#timer {
+
+
+    font-size:75px;
+
+    font-weight:800;
+
+    margin:35px 0;
+
+    text-shadow:
+
+    0 0 20px white;
+
+}
+
+
+
+.label {
+
+    opacity:0.7;
+
+    letter-spacing:3px;
+
+}
+
+
+
+#result {
+
+
+    font-size:35px;
+
+    margin:20px;
+
+    font-weight:700;
+
+}
+
+
+
+.success {
+
+    color:#66ff99;
+
+    text-shadow:
+
+    0 0 15px lime;
+
+}
+
+
+
+.fail {
+
+    color:#ff5555;
+
+    text-shadow:
+
+    0 0 15px red;
+
+}
+
+
+
+.stats {
+
+    margin-top:30px;
+
+    font-size:20px;
+
+}
+
+
+
+/* Log */
+
+#logPanel {
+
+    width:450px;
+
+    height:560px;
+
+}
+
+
+
+#log {
+
+
+    height:450px;
+
+    overflow-y:auto;
+
+}
+
+
+
+.log {
+
+
+    padding:15px;
+
+    border-bottom:
+
+    1px solid rgba(255,255,255,0.2);
+
+    margin-bottom:5px;
+
+}
+
+
+
+.log.success {
+
+    color:#66ff99;
+
+}
+
+
+
+.log.fail {
+
+    color:#ff7777;
+
+}
+
+
+
+
+</style>
+
+
+</head>
+
+
+
+<body>
+
+
+
+<div class="panel" id="game">
+
+
+<h1>EDEN RNG SIMULATOR</h1>
+
+
+<div class="subtitle">
+
+1 / 50,000 CHANCE<br>
+
+ROLL EVERY 2 MINUTES
+
+</div>
+
+
+
+<br>
+
+
+
+<div class="label">
+
+NEXT ROLL
+
+</div>
+
+
+<div id="timer">
+
+02:00
+
+</div>
+
+
+
+
+<div class="label">
+
+LAST RESULT
+
+</div>
+
+
+<div id="result">
+
+WAITING...
+
+</div>
+
+
+
+
+<div class="stats">
+
+🎲 TOTAL ROLLS:
+
+<span id="attempts">
+
+0
+
+</span>
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+<div class="panel" id="logPanel">
+
+
+<h2>
+
+📜 RNG LOG
+
+</h2>
+
+
+<div id="log">
+
+No rolls yet...
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+<script>
+
+
+let seconds = 120;
+
+
+let attempts = 0;
+
+
+
+function RNG(){
+
+
+attempts++;
+
+
+document.getElementById("attempts").innerHTML =
+attempts;
+
+
+
+let roll = Math.floor(Math.random()*50000)+1;
+
+
+
+let now = new Date();
+
+
+let date = now.toLocaleDateString();
+
+
+let time = now.toLocaleTimeString();
+
+
+
+let result =
+document.getElementById("result");
+
+
+
+let log =
+document.getElementById("log");
+
+
+
+
+
+if(roll === 1){
+
+
+
+result.innerHTML =
+"✨ EDEN SPAWNED ✨";
+
+
+result.className="success";
+
+
+
+log.innerHTML =
+
+`
+
+<div class="log success">
+
+✨ EDEN SPAWNED ✨
+
+<br>
+
+Roll #${attempts}
+
+<br>
+
+Roll: ${roll}
+
+<br>
+
+Date: ${date}
+
+<br>
+
+Time: ${time}
+
+</div>
+
+`
+
++ log.innerHTML;
+
+
+
+}
+
+
+
+else{
+
+
+
+result.innerHTML =
+"❌ FAILED";
+
+
+result.className="fail";
+
+
+
+log.innerHTML =
+
+
+`
+
+<div class="log fail">
+
+
+❌ FAILED
+
+
+<br>
+
+
+Roll #${attempts}
+
+
+<br>
+
+
+Roll: ${roll}
+
+
+<br>
+
+
+Date: ${date}
+
+
+<br>
+
+
+Time: ${time}
+
+
+</div>
+
+
+`
+
++ log.innerHTML;
+
+
+
+}
+
+
+
+seconds = 120;
+
+
+
+}
+
+
+
+
+setInterval(function(){
+
+
+seconds--;
+
+
+
+let min =
+Math.floor(seconds/60);
+
+
+
+let sec =
+seconds%60;
+
+
+
+document.getElementById("timer").innerHTML =
+
+
+String(min).padStart(2,"0")
+
++
+
+":"
+
++
+
+String(sec).padStart(2,"0");
+
+
+
+
+
+if(seconds <= 0){
+
+
+RNG();
+
+
+}
+
+
+
+},1000);
+
+
+
+</script>
+
+
+
+</body>
+
+</html>
