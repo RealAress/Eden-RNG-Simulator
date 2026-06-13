@@ -9,7 +9,9 @@
 
 <style>
 
-* { box-sizing: border-box; }
+* {
+    box-sizing: border-box;
+}
 
 body {
     margin:0;
@@ -117,23 +119,7 @@ h1 {
     margin:20px;
 }
 
-/* LOG */
-#logPanel {
-    width:450px;
-    height:560px;
-}
-
-#log {
-    height:450px;
-    overflow-y:auto;
-}
-
-.log {
-    padding:15px;
-    border-bottom:1px solid rgba(255,255,255,0.2);
-}
-
-/* SPEED BUTTONS */
+/* SPEED */
 .speed-buttons {
     display:flex;
     justify-content:space-between;
@@ -150,6 +136,7 @@ h1 {
     background:rgba(10,15,25,0.85);
     border:1px solid rgba(255,255,255,0.6);
     cursor:pointer;
+    transition:0.2s;
 }
 
 .btn-corner {
@@ -169,6 +156,60 @@ h1 {
     color:black;
 }
 
+/* LOG PANEL */
+#logPanel {
+    width:450px;
+    height:560px;
+}
+
+#log {
+    height:450px;
+    overflow-y:auto;
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+}
+
+/* MODERN LOG ROW (LIKE YOUR IMAGE) */
+.log-row {
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:12px 14px;
+
+    background:rgba(10,15,25,0.75);
+    border:1px solid rgba(255,255,255,0.08);
+
+    border-radius:6px;
+
+    font-size:14px;
+    letter-spacing:1px;
+}
+
+.log-left {
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.log-icon {
+    font-size:16px;
+}
+
+.log-success {
+    color:#66ff99;
+}
+
+.log-fail {
+    color:#ff4d4d;
+}
+
+.log-right {
+    opacity:0.7;
+    font-size:12px;
+}
+
 .sols-logo {
     position:fixed;
     left:25px;
@@ -184,16 +225,6 @@ h1 {
     transform:translateX(-50%);
     font-size:14px;
     color:rgba(255,255,255,0.7);
-}
-
-.success {
-    color:#66ff99;
-    text-shadow:0 0 15px lime;
-}
-
-.fail {
-    color:#ff5555;
-    text-shadow:0 0 15px red;
 }
 
 </style>
@@ -250,10 +281,6 @@ ROLL EVERY 2 MINUTES
 <div class="label">LAST RESULT</div>
 <div id="result">WAITING...</div>
 
-<div class="stats">
-🎲 TOTAL ROLLS: <span id="attempts">0</span>
-</div>
-
 </div>
 
 <div class="panel" id="logPanel">
@@ -262,7 +289,7 @@ ROLL EVERY 2 MINUTES
 <div class="corner right"></div>
 
 <h2>📜 RNG LOG</h2>
-<div id="log">No rolls yet...</div>
+<div id="log"></div>
 
 </div>
 
@@ -271,12 +298,10 @@ ROLL EVERY 2 MINUTES
 let seconds = 120;
 let speed = 1;
 let attempts = 0;
-
 let last = Date.now();
 
-function setSpeed(value, btn) {
-    speed = value;
-
+function setSpeed(v, btn) {
+    speed = v;
     document.querySelectorAll(".speed-btn").forEach(b => b.classList.remove("active"));
     btn.classList.add("active");
 }
@@ -284,28 +309,36 @@ function setSpeed(value, btn) {
 function RNG() {
 
     attempts++;
-    document.getElementById("attempts").innerHTML = attempts;
 
     let roll = Math.floor(Math.random() * 50000) + 1;
-
     let now = new Date();
-
-    let log = document.getElementById("log");
-    let result = document.getElementById("result");
-
     let win = roll === 1;
 
-    result.innerHTML = win ? "✨ EDEN SPAWNED ✨" : "❌ FAILED";
-    result.className = win ? "success" : "fail";
+    document.getElementById("result").innerHTML =
+        win ? "✨ EDEN SPAWNED ✨" : "❌ FAILED";
 
-    log.innerHTML =
-    `<div class="log" style="color:${win ? "#66ff99" : "#ff5555"}">
-        <b>${win ? "✨ EDEN SPAWNED ✨" : "❌ FAILED"}</b><br>
-        Attempt #${attempts}<br>
-        Roll: ${roll}<br>
-        Date: ${now.toLocaleDateString()}<br>
-        Time: ${now.toLocaleTimeString()}
-    </div>` + log.innerHTML;
+    document.getElementById("result").style.color =
+        win ? "#66ff99" : "#ff4d4d";
+
+    let row = document.createElement("div");
+    row.className = "log-row " + (win ? "log-success" : "log-fail");
+
+    row.innerHTML = `
+        <div class="log-left">
+            <div class="log-icon">${win ? "✔" : "✖"}</div>
+            <div>
+                <b>${win ? "SPAWNED" : "FAILED"}</b>
+                | Attempt #${attempts}
+                | Roll: ${roll}
+            </div>
+        </div>
+
+        <div class="log-right">
+            ${now.toLocaleTimeString()}
+        </div>
+    `;
+
+    document.getElementById("log").prepend(row);
 }
 
 setInterval(() => {
@@ -314,7 +347,6 @@ setInterval(() => {
     let delta = (now - last) / 1000;
     last = now;
 
-    // SPEED AFFECTS TIMER PROPERLY
     seconds -= delta * speed;
 
     if (seconds <= 0) {
@@ -322,11 +354,11 @@ setInterval(() => {
         RNG();
     }
 
-    let min = Math.floor(seconds / 60);
-    let sec = Math.floor(seconds % 60);
+    let m = Math.floor(seconds / 60);
+    let s = Math.floor(seconds % 60);
 
     document.getElementById("timer").innerHTML =
-        String(min).padStart(2,"0") + ":" + String(sec).padStart(2,"0");
+        String(m).padStart(2,"0") + ":" + String(s).padStart(2,"0");
 
 }, 100);
 
