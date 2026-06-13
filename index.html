@@ -278,7 +278,7 @@ h1 {
     gap:20px;
 }
 
-/* DISCORD BUTTON */
+/* DISCORD SERVER BUTTON */
 .discord-btn {
     width:180px;
     height:70px;
@@ -288,16 +288,24 @@ h1 {
     justify-content:center;
     gap:10px;
 
+    position:relative;
+
     text-decoration:none;
     color:white;
 
     background:rgba(10,15,25,0.85);
     border:1px solid rgba(255,255,255,0.6);
 
+    font-family:"Sarpanch", sans-serif;
     font-weight:700;
     letter-spacing:1px;
 
-    position:relative;
+    transition:0.2s;
+}
+
+.discord-btn:hover {
+    background:white;
+    color:black;
 }
 
 .discord-icon {
@@ -309,6 +317,43 @@ h1 {
     font-size:12px;
     text-align:center;
     line-height:1.1;
+}
+
+
+/* SERVER BUTTON EDGE CORNERS */
+.discord-btn .btn-corner {
+    position:absolute;
+    width:10px;
+    height:10px;
+    pointer-events:none;
+}
+
+.discord-btn .tl {
+    top:0;
+    left:0;
+    border-top:2px solid white;
+    border-left:2px solid white;
+}
+
+.discord-btn .tr {
+    top:0;
+    right:0;
+    border-top:2px solid white;
+    border-right:2px solid white;
+}
+
+.discord-btn .bl {
+    bottom:0;
+    left:0;
+    border-bottom:2px solid white;
+    border-left:2px solid white;
+}
+
+.discord-btn .br {
+    bottom:0;
+    right:0;
+    border-bottom:2px solid white;
+    border-right:2px solid white;
 }
 
 /* LOGO */
@@ -338,13 +383,18 @@ h1 {
 
 <div class="left-ui">
 
-<a class="discord-btn" href="https://discord.gg/ruinsvb" target="_blank">
+<a href="https://discord.gg/ruinsvb" target="_blank" class="discord-btn">
 
     <img src="discordicon.png" class="discord-icon">
 
     <div class="discord-text">
         JOIN OUR SERVER!
     </div>
+
+    <div class="btn-corner tl"></div>
+    <div class="btn-corner tr"></div>
+    <div class="btn-corner bl"></div>
+    <div class="btn-corner br"></div>
 
 </a>
 
@@ -434,7 +484,11 @@ SPEED
 <img src="solsrnglogo.png" class="sols-logo">
 
 <div class="disclaimer">
-Fan-made simulator by @ruinoxa • Not affiliated with Sol's RNG
+Fan-made simulator by 
+<a href="https://discord.com/users/542875554429272094" target="_blank">
+@ruinoxa
+</a>
+• Not affiliated with Sol's RNG
 </div>
 
 <script>
