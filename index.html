@@ -43,46 +43,42 @@ body {
     padding:30px;
 }
 
-.panel::before,
-.panel::after {
-    content:"";
-    position:absolute;
-    width:32px;
-    height:32px;
-}
-
-.panel::before {
-    top:-2px;
-    left:-2px;
-    border-top:3px solid white;
-    border-left:3px solid white;
-}
-
-.panel::after {
-    top:-2px;
-    right:-2px;
-    border-top:3px solid white;
-    border-right:3px solid white;
-}
-
+/* ✅ INNER CORNERS SYSTEM (FIXED) */
 .corner {
     position:absolute;
-    width:32px;
-    height:32px;
+    width:18px;
+    height:18px;
+    pointer-events:none;
 }
 
-.corner.left {
-    left:-2px;
-    bottom:-2px;
-    border-left:3px solid white;
-    border-bottom:3px solid white;
+/* top */
+.corner.tl {
+    top:10px;
+    left:10px;
+    border-top:2px solid white;
+    border-left:2px solid white;
 }
 
-.corner.right {
-    right:-2px;
-    bottom:-2px;
-    border-right:3px solid white;
-    border-bottom:3px solid white;
+.corner.tr {
+    top:10px;
+    right:10px;
+    border-top:2px solid white;
+    border-right:2px solid white;
+}
+
+/* bottom */
+.corner.bl {
+    bottom:10px;
+    left:10px;
+    border-bottom:2px solid white;
+    border-left:2px solid white;
+}
+
+.corner.br {
+    bottom:10px;
+    right:10px;
+    border-bottom:2px solid white;
+    border-right:2px solid white;
 }
 
 /* GAME PANEL */
@@ -134,13 +130,11 @@ h1 {
     height:50px;
 
     position:relative;
-    overflow:visible;
 
     font-family:"Sarpanch";
     font-size:12px;
     font-weight:700;
     letter-spacing:1px;
-    line-height:1.2;
 
     display:flex;
     flex-direction:column;
@@ -159,18 +153,18 @@ h1 {
     color:black;
 }
 
-/* CORNERS */
+/* SPEED BUTTON CORNERS (INNER STYLE) */
 .btn-corner {
     position:absolute;
-    width:12px;
-    height:12px;
+    width:10px;
+    height:10px;
     pointer-events:none;
 }
 
-.btn-corner.tl { top:-2px; left:-2px; border-top:2px solid white; border-left:2px solid white; }
-.btn-corner.tr { top:-2px; right:-2px; border-top:2px solid white; border-right:2px solid white; }
-.btn-corner.bl { bottom:-2px; left:-2px; border-bottom:2px solid white; border-left:2px solid white; }
-.btn-corner.br { bottom:-2px; right:-2px; border-bottom:2px solid white; border-right:2px solid white; }
+.btn-corner.tl { top:6px; left:6px; border-top:2px solid white; border-left:2px solid white; }
+.btn-corner.tr { top:6px; right:6px; border-top:2px solid white; border-right:2px solid white; }
+.btn-corner.bl { bottom:6px; left:6px; border-bottom:2px solid white; border-left:2px solid white; }
+.btn-corner.br { bottom:6px; right:6px; border-bottom:2px solid white; border-right:2px solid white; }
 
 /* LOG PANEL */
 #logPanel {
@@ -179,7 +173,6 @@ h1 {
     overflow:hidden;
 }
 
-/* ✅ RESTORED WHITE SCROLLBAR */
 #log {
     height:450px;
     overflow-y:scroll;
@@ -192,7 +185,7 @@ h1 {
     padding-right:6px;
 }
 
-/* Chrome / Edge */
+/* WHITE SCROLLBAR */
 #log::-webkit-scrollbar {
     width:10px;
 }
@@ -211,7 +204,6 @@ h1 {
     background:#eaeaea;
 }
 
-/* Firefox */
 #log {
     scrollbar-width:auto;
     scrollbar-color:white rgba(255,255,255,0.08);
@@ -219,10 +211,6 @@ h1 {
 
 /* LOG ROW */
 .log-row {
-    width:100%;
-    flex-shrink:0;
-
-    position:relative;
     display:flex;
     justify-content:space-between;
     align-items:center;
@@ -233,7 +221,6 @@ h1 {
     border:1px solid rgba(255,255,255,0.08);
 
     font-size:14px;
-    letter-spacing:1px;
 }
 
 .log-success { color:#66ff99; }
@@ -288,15 +275,15 @@ h1 {
 /* DISCORD CORNERS */
 .discord-btn .btn-corner {
     position:absolute;
-    width:12px;
-    height:12px;
+    width:10px;
+    height:10px;
     pointer-events:none;
 }
 
-.discord-btn .tl { top:-2px; left:-2px; border-top:2px solid white; border-left:2px solid white; }
-.discord-btn .tr { top:-2px; right:-2px; border-top:2px solid white; border-right:2px solid white; }
-.discord-btn .bl { bottom:-2px; left:-2px; border-bottom:2px solid white; border-left:2px solid white; }
-.discord-btn .br { bottom:-2px; right:-2px; border-bottom:2px solid white; border-right:2px solid white; }
+.discord-btn .btn-corner.tl { top:6px; left:6px; border-top:2px solid white; border-left:2px solid white; }
+.discord-btn .btn-corner.tr { top:6px; right:6px; border-top:2px solid white; border-right:2px solid white; }
+.discord-btn .btn-corner.bl { bottom:6px; left:6px; border-bottom:2px solid white; border-left:2px solid white; }
+.discord-btn .btn-corner.br { bottom:6px; right:6px; border-bottom:2px solid white; border-right:2px solid white; }
 
 .discord-btn:hover {
     background:white;
@@ -350,8 +337,11 @@ h1 {
 </a>
 
 <div class="panel" id="game">
-<div class="corner left"></div>
-<div class="corner right"></div>
+
+<div class="corner tl"></div>
+<div class="corner tr"></div>
+<div class="corner bl"></div>
+<div class="corner br"></div>
 
 <h1>EDEN RNG SIMULATOR</h1>
 
@@ -407,11 +397,15 @@ ROLL EVERY 2 MINUTES
 </div>
 
 <div class="panel" id="logPanel">
-<div class="corner left"></div>
-<div class="corner right"></div>
+
+<div class="corner tl"></div>
+<div class="corner tr"></div>
+<div class="corner bl"></div>
+<div class="corner br"></div>
 
 <h2>📜 RNG LOG</h2>
 <div id="log"></div>
+
 </div>
 
 <img src="solsrnglogo.png" class="sols-logo">
