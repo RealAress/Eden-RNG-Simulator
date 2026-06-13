@@ -133,6 +133,9 @@ h1 {
     width:78px;
     height:50px;
 
+    position:relative;
+    overflow:hidden;
+
     font-family:"Sarpanch";
     font-size:12px;
     font-weight:700;
@@ -156,19 +159,55 @@ h1 {
     color:black;
 }
 
-/* LOG PANEL (FIXED STRUCTURE) */
+/* BUTTON CORNERS */
+.btn-corner {
+    position:absolute;
+    width:10px;
+    height:10px;
+}
+
+/* top-left */
+.btn-corner.tl {
+    top:-2px;
+    left:-2px;
+    border-top:2px solid white;
+    border-left:2px solid white;
+}
+
+/* top-right */
+.btn-corner.tr {
+    top:-2px;
+    right:-2px;
+    border-top:2px solid white;
+    border-right:2px solid white;
+}
+
+/* bottom-left */
+.btn-corner.bl {
+    bottom:-2px;
+    left:-2px;
+    border-bottom:2px solid white;
+    border-left:2px solid white;
+}
+
+/* bottom-right */
+.btn-corner.br {
+    bottom:-2px;
+    right:-2px;
+    border-bottom:2px solid white;
+    border-right:2px solid white;
+}
+
+/* LOG PANEL */
 #logPanel {
     width:450px;
     height:560px;
-
-    overflow:hidden; /* IMPORTANT: prevents visual shift */
+    overflow:hidden;
 }
 
-/* LOG AREA */
 #log {
     height:450px;
-
-    overflow-y:scroll; /* always reserve scrollbar space */
+    overflow-y:scroll;
     overflow-x:hidden;
 
     display:flex;
@@ -176,20 +215,16 @@ h1 {
     gap:10px;
 
     padding-right:6px;
-    width:100%;
-    box-sizing:border-box;
 
-    scrollbar-gutter: stable; /* KEY FIX (modern browsers) */
+    scrollbar-gutter: stable;
 }
 
-/* SCROLLBAR STYLE */
 #log::-webkit-scrollbar {
     width:6px;
 }
 
 #log::-webkit-scrollbar-track {
     background:rgba(255,255,255,0.05);
-    border-radius:10px;
 }
 
 #log::-webkit-scrollbar-thumb {
@@ -206,7 +241,7 @@ h1 {
     scrollbar-color: rgba(255,255,255,0.25) rgba(255,255,255,0.05);
 }
 
-/* LOG ROW (NO SHRINK FIX) */
+/* LOG ROW */
 .log-row {
     width:100%;
     min-width:0;
@@ -322,10 +357,37 @@ ROLL EVERY 2 MINUTES
 
 <div class="speed-buttons">
 
-<button class="speed-btn active" onclick="setSpeed(1,this)">1X<br>SPEED</button>
-<button class="speed-btn" onclick="setSpeed(2,this)">2X<br>SPEED</button>
-<button class="speed-btn" onclick="setSpeed(5,this)">5X<br>SPEED</button>
-<button class="speed-btn" onclick="setSpeed(10,this)">10X<br>SPEED</button>
+<button class="speed-btn active" onclick="setSpeed(1,this)">
+1X<br>SPEED
+<div class="btn-corner tl"></div>
+<div class="btn-corner tr"></div>
+<div class="btn-corner bl"></div>
+<div class="btn-corner br"></div>
+</button>
+
+<button class="speed-btn" onclick="setSpeed(2,this)">
+2X<br>SPEED
+<div class="btn-corner tl"></div>
+<div class="btn-corner tr"></div>
+<div class="btn-corner bl"></div>
+<div class="btn-corner br"></div>
+</button>
+
+<button class="speed-btn" onclick="setSpeed(5,this)">
+5X<br>SPEED
+<div class="btn-corner tl"></div>
+<div class="btn-corner tr"></div>
+<div class="btn-corner bl"></div>
+<div class="btn-corner br"></div>
+</button>
+
+<button class="speed-btn" onclick="setSpeed(10,this)">
+10X<br>SPEED
+<div class="btn-corner tl"></div>
+<div class="btn-corner tr"></div>
+<div class="btn-corner bl"></div>
+<div class="btn-corner br"></div>
+</button>
 
 </div>
 
