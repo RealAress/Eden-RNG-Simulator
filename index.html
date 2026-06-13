@@ -166,10 +166,34 @@ h1 {
 
 #log {
     height:450px;
+
     overflow-y:auto;
+    overflow-x:hidden;
+
     display:flex;
     flex-direction:column;
     gap:10px;
+
+    padding-right:10px;
+    box-sizing:border-box;
+}
+
+/* custom scrollbar (no layout shift) */
+#log::-webkit-scrollbar {
+    width:6px;
+}
+
+#log::-webkit-scrollbar-track {
+    background:rgba(255,255,255,0.05);
+}
+
+#log::-webkit-scrollbar-thumb {
+    background:rgba(255,255,255,0.25);
+    border-radius:10px;
+}
+
+#log::-webkit-scrollbar-thumb:hover {
+    background:rgba(255,255,255,0.4);
 }
 
 /* ===================== */
@@ -189,6 +213,9 @@ h1 {
 
     font-size:14px;
     letter-spacing:1px;
+
+    width:100%;
+    flex-shrink:0;
 
     overflow:hidden;
 }
@@ -217,24 +244,24 @@ h1 {
     border-right:2px solid white;
 }
 
-/* bottom-left */
-.log-row .bl {
+/* bottom corners */
+.log-row .bl,
+.log-row .br {
     position:absolute;
-    bottom:-1px;
-    left:-1px;
     width:16px;
     height:16px;
+}
+
+.log-row .bl {
+    bottom:-1px;
+    left:-1px;
     border-bottom:2px solid white;
     border-left:2px solid white;
 }
 
-/* bottom-right */
 .log-row .br {
-    position:absolute;
     bottom:-1px;
     right:-1px;
-    width:16px;
-    height:16px;
     border-bottom:2px solid white;
     border-right:2px solid white;
 }
@@ -248,7 +275,7 @@ h1 {
 }
 
 /* ===================== */
-/* HUD ELEMENTS (FIXED) */
+/* HUD ELEMENTS */
 /* ===================== */
 
 .sols-logo {
