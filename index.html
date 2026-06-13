@@ -31,7 +31,7 @@ body {
     background-position:center;
 }
 
-/* PANEL */
+/* MAIN PANELS */
 .panel {
     position:relative;
     background:rgba(10,15,25,0.85);
@@ -119,7 +119,7 @@ h1 {
     margin:20px;
 }
 
-/* SPEED */
+/* SPEED BUTTONS */
 .speed-buttons {
     display:flex;
     justify-content:space-between;
@@ -127,7 +127,6 @@ h1 {
 }
 
 .speed-btn {
-    position:relative;
     width:78px;
     height:45px;
     font-family:"Sarpanch";
@@ -136,7 +135,6 @@ h1 {
     background:rgba(10,15,25,0.85);
     border:1px solid rgba(255,255,255,0.6);
     cursor:pointer;
-    transition:0.2s;
 }
 
 .speed-btn:hover,
@@ -159,23 +157,71 @@ h1 {
     gap:10px;
 }
 
-/* LOG ROW WITH CORNERS */
+/* ========================= */
+/* LOG ROW - FULL FRAME CORNERS */
+/* ========================= */
+
 .log-row {
     position:relative;
     display:flex;
     justify-content:space-between;
     align-items:center;
 
-    padding:12px 14px;
+    padding:14px 16px;
 
     background:rgba(10,15,25,0.75);
     border:1px solid rgba(255,255,255,0.08);
-    border-radius:6px;
 
     font-size:14px;
     letter-spacing:1px;
 
     overflow:hidden;
+}
+
+/* TOP LEFT */
+.log-row::before {
+    content:"";
+    position:absolute;
+    top:-2px;
+    left:-2px;
+    width:26px;
+    height:26px;
+    border-top:3px solid white;
+    border-left:3px solid white;
+}
+
+/* TOP RIGHT */
+.log-row::after {
+    content:"";
+    position:absolute;
+    top:-2px;
+    right:-2px;
+    width:26px;
+    height:26px;
+    border-top:3px solid white;
+    border-right:3px solid white;
+}
+
+/* BOTTOM LEFT */
+.log-row .bl {
+    position:absolute;
+    bottom:-2px;
+    left:-2px;
+    width:26px;
+    height:26px;
+    border-bottom:3px solid white;
+    border-left:3px solid white;
+}
+
+/* BOTTOM RIGHT */
+.log-row .br {
+    position:absolute;
+    bottom:-2px;
+    right:-2px;
+    width:26px;
+    height:26px;
+    border-bottom:3px solid white;
+    border-right:3px solid white;
 }
 
 .log-success { color:#66ff99; }
@@ -186,41 +232,6 @@ h1 {
     font-size:12px;
 }
 
-/* CORNERS (REUSED STYLE) */
-.log-corner {
-    position:absolute;
-    width:12px;
-    height:12px;
-}
-
-.log-corner.tl {
-    top:-2px;
-    left:-2px;
-    border-top:2px solid white;
-    border-left:2px solid white;
-}
-
-.log-corner.tr {
-    top:-2px;
-    right:-2px;
-    border-top:2px solid white;
-    border-right:2px solid white;
-}
-
-.log-corner.bl {
-    bottom:-2px;
-    left:-2px;
-    border-bottom:2px solid white;
-    border-left:2px solid white;
-}
-
-.log-corner.br {
-    bottom:-2px;
-    right:-2px;
-    border-bottom:2px solid white;
-    border-right:2px solid white;
-}
-
 </style>
 
 </head>
@@ -228,7 +239,6 @@ h1 {
 <body>
 
 <div class="panel" id="game">
-
 <div class="corner left"></div>
 <div class="corner right"></div>
 
@@ -295,10 +305,8 @@ function RNG() {
     row.className = "log-row " + (win ? "log-success" : "log-fail");
 
     row.innerHTML = `
-        <div class="log-corner tl"></div>
-        <div class="log-corner tr"></div>
-        <div class="log-corner bl"></div>
-        <div class="log-corner br"></div>
+        <div class="bl"></div>
+        <div class="br"></div>
 
         <div>
             <b>${win ? "SPAWNED" : "FAILED"}</b>
