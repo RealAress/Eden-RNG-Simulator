@@ -85,7 +85,7 @@ body {
     border-bottom:3px solid white;
 }
 
-/* GAME PANEL */
+/* MAIN GAME PANEL */
 #game {
     width:430px;
     text-align:center;
@@ -231,8 +231,6 @@ h1 {
 
     font-size:14px;
     letter-spacing:1px;
-
-    overflow:hidden;
 }
 
 .log-success { color:#66ff99; }
@@ -243,23 +241,15 @@ h1 {
     font-size:12px;
 }
 
-/* SOLS LOGO */
-.sols-logo {
-    position:fixed;
-    left:25px;
-    bottom:20px;
-    width:220px;
-    opacity:0.85;
-    z-index:9999;
+/* CENTER UI WRAPPER (IMPORTANT FIX) */
+.ui-center {
+    display:flex;
+    align-items:center;
+    gap:20px;
 }
 
-/* DISCORD BUTTON (NEW) */
+/* DISCORD BUTTON (NOW PROPER UI ELEMENT) */
 .discord-btn {
-    position:fixed;
-    left:25px;
-    top:50%;
-    transform:translateY(-50%);
-
     width:180px;
     height:70px;
 
@@ -278,16 +268,14 @@ h1 {
     font-weight:700;
     letter-spacing:1px;
 
-    overflow:visible;
+    position:relative;
 }
 
-/* ICON */
 .discord-icon {
     width:26px;
     height:26px;
 }
 
-/* TEXT */
 .discord-text {
     font-size:12px;
     text-align:center;
@@ -316,6 +304,16 @@ h1 {
     filter:invert(1);
 }
 
+/* LOGO */
+.sols-logo {
+    position:fixed;
+    left:25px;
+    bottom:20px;
+    width:220px;
+    opacity:0.85;
+    z-index:9999;
+}
+
 /* DISCLAIMER */
 .disclaimer {
     position:fixed;
@@ -333,22 +331,7 @@ h1 {
 
 <body>
 
-<!-- DISCORD BUTTON -->
-<a href="https://discord.gg/ruinsvb" target="_blank" class="discord-btn">
-
-    <img src="discordicon.png" class="discord-icon">
-
-    <div class="discord-text">
-        JOIN OUR SERVER!
-    </div>
-
-    <div class="btn-corner tl"></div>
-    <div class="btn-corner tr"></div>
-    <div class="btn-corner bl"></div>
-    <div class="btn-corner br"></div>
-
-</a>
-
+<!-- GAME PANEL -->
 <div class="panel" id="game">
 <div class="corner left"></div>
 <div class="corner right"></div>
@@ -404,12 +387,32 @@ ROLL EVERY 2 MINUTES
 
 </div>
 
+<!-- CENTER CLUSTER (LOG + DISCORD BUTTON) -->
+<div class="ui-center">
+
+<a href="https://discord.gg/ruinsvb" target="_blank" class="discord-btn">
+
+    <img src="discordicon.png" class="discord-icon">
+
+    <div class="discord-text">
+        JOIN OUR SERVER!
+    </div>
+
+    <div class="btn-corner tl"></div>
+    <div class="btn-corner tr"></div>
+    <div class="btn-corner bl"></div>
+    <div class="btn-corner br"></div>
+
+</a>
+
 <div class="panel" id="logPanel">
 <div class="corner left"></div>
 <div class="corner right"></div>
 
 <h2>📜 RNG LOG</h2>
 <div id="log"></div>
+</div>
+
 </div>
 
 <img src="solsrnglogo.png" class="sols-logo">
