@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
 
 <title>Eden Spawnrate Simulator</title>
@@ -8,7 +7,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Sarpanch:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 <style>
-
 * {
     box-sizing: border-box;
 }
@@ -82,7 +80,6 @@ body {
     border-bottom:3px solid white;
 }
 
-/* GAME PANEL */
 #game {
     width:430px;
     text-align:center;
@@ -119,7 +116,6 @@ h1 {
     margin:20px;
 }
 
-/* SPEED */
 .speed-buttons {
     display:flex;
     justify-content:space-between;
@@ -127,7 +123,6 @@ h1 {
 }
 
 .speed-btn {
-    position:relative;
     width:78px;
     height:45px;
     font-family:"Sarpanch";
@@ -136,19 +131,7 @@ h1 {
     background:rgba(10,15,25,0.85);
     border:1px solid rgba(255,255,255,0.6);
     cursor:pointer;
-    transition:0.2s;
 }
-
-.btn-corner {
-    position:absolute;
-    width:10px;
-    height:10px;
-}
-
-.tl { top:-2px; left:-2px; border-top:2px solid white; border-left:2px solid white; }
-.tr { top:-2px; right:-2px; border-top:2px solid white; border-right:2px solid white; }
-.bl { bottom:-2px; left:-2px; border-bottom:2px solid white; border-left:2px solid white; }
-.br { bottom:-2px; right:-2px; border-bottom:2px solid white; border-right:2px solid white; }
 
 .speed-btn:hover,
 .speed-btn.active {
@@ -156,7 +139,6 @@ h1 {
     color:black;
 }
 
-/* LOG PANEL */
 #logPanel {
     width:450px;
     height:560px;
@@ -170,73 +152,30 @@ h1 {
     gap:8px;
 }
 
-/* MODERN LOG ROW (LIKE YOUR IMAGE) */
 .log-row {
     display:flex;
     justify-content:space-between;
-    align-items:center;
-
     padding:12px 14px;
-
     background:rgba(10,15,25,0.75);
     border:1px solid rgba(255,255,255,0.08);
-
     border-radius:6px;
-
     font-size:14px;
-    letter-spacing:1px;
 }
 
-.log-left {
-    display:flex;
-    align-items:center;
-    gap:10px;
-}
-
-.log-icon {
-    font-size:16px;
-}
-
-.log-success {
-    color:#66ff99;
-}
-
-.log-fail {
-    color:#ff4d4d;
-}
+.log-success { color:#66ff99; }
+.log-fail { color:#ff4d4d; }
 
 .log-right {
     opacity:0.7;
     font-size:12px;
 }
-
-.sols-logo {
-    position:fixed;
-    left:25px;
-    bottom:20px;
-    width:220px;
-    opacity:0.85;
-}
-
-.disclaimer {
-    position:fixed;
-    bottom:15px;
-    left:50%;
-    transform:translateX(-50%);
-    font-size:14px;
-    color:rgba(255,255,255,0.7);
-}
-
 </style>
 
 </head>
 
 <body>
 
-<img src="solsrnglogo.png" class="sols-logo">
-
 <div class="panel" id="game">
-
 <div class="corner left"></div>
 <div class="corner right"></div>
 
@@ -251,122 +190,90 @@ ROLL EVERY 2 MINUTES
 <div id="timer">02:00</div>
 
 <div class="speed-buttons">
-
-<button class="speed-btn active" onclick="setSpeed(1,this)">
-<div class="btn-corner tl"></div><div class="btn-corner tr"></div>
-<div class="btn-corner bl"></div><div class="btn-corner br"></div>
-1X<br>SPEED
-</button>
-
-<button class="speed-btn" onclick="setSpeed(2,this)">
-<div class="btn-corner tl"></div><div class="btn-corner tr"></div>
-<div class="btn-corner bl"></div><div class="btn-corner br"></div>
-2X<br>SPEED
-</button>
-
-<button class="speed-btn" onclick="setSpeed(5,this)">
-<div class="btn-corner tl"></div><div class="btn-corner tr"></div>
-<div class="btn-corner bl"></div><div class="btn-corner br"></div>
-5X<br>SPEED
-</button>
-
-<button class="speed-btn" onclick="setSpeed(10,this)">
-<div class="btn-corner tl"></div><div class="btn-corner tr"></div>
-<div class="btn-corner bl"></div><div class="btn-corner br"></div>
-10X<br>SPEED
-</button>
-
+<button class="speed-btn active" onclick="setSpeed(1,this)">1X</button>
+<button class="speed-btn" onclick="setSpeed(2,this)">2X</button>
+<button class="speed-btn" onclick="setSpeed(5,this)">5X</button>
+<button class="speed-btn" onclick="setSpeed(10,this)">10X</button>
 </div>
 
 <div class="label">LAST RESULT</div>
 <div id="result">WAITING...</div>
-
 </div>
 
 <div class="panel" id="logPanel">
-
 <div class="corner left"></div>
 <div class="corner right"></div>
 
 <h2>📜 RNG LOG</h2>
 <div id="log"></div>
-
 </div>
 
 <script>
+document.addEventListener("DOMContentLoaded", () => {
 
-let seconds = 120;
-let speed = 1;
-let attempts = 0;
-let last = Date.now();
+    let seconds = 120;
+    let speed = 1;
+    let attempts = 0;
+    let last = Date.now();
 
-function setSpeed(v, btn) {
-    speed = v;
-    document.querySelectorAll(".speed-btn").forEach(b => b.classList.remove("active"));
-    btn.classList.add("active");
-}
+    const logEl = document.getElementById("log");
+    const timerEl = document.getElementById("timer");
+    const resultEl = document.getElementById("result");
 
-function RNG() {
+    window.setSpeed = function(v, btn) {
+        speed = v;
+        document.querySelectorAll(".speed-btn").forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+    };
 
-    attempts++;
+    function RNG() {
+        attempts++;
 
-    let roll = Math.floor(Math.random() * 50000) + 1;
-    let now = new Date();
-    let win = roll === 1;
+        let roll = Math.floor(Math.random() * 50000) + 1;
+        let win = roll === 1;
+        let now = new Date();
 
-    document.getElementById("result").innerHTML =
-        win ? "✨ EDEN SPAWNED ✨" : "❌ FAILED";
+        resultEl.innerHTML = win ? "✨ EDEN SPAWNED ✨" : "❌ FAILED";
+        resultEl.style.color = win ? "#66ff99" : "#ff4d4d";
 
-    document.getElementById("result").style.color =
-        win ? "#66ff99" : "#ff4d4d";
+        let row = document.createElement("div");
+        row.className = "log-row " + (win ? "log-success" : "log-fail");
 
-    let row = document.createElement("div");
-    row.className = "log-row " + (win ? "log-success" : "log-fail");
-
-    row.innerHTML = `
-        <div class="log-left">
-            <div class="log-icon">${win ? "✔" : "✖"}</div>
+        row.innerHTML = `
             <div>
                 <b>${win ? "SPAWNED" : "FAILED"}</b>
-                | Attempt #${attempts}
+                | #${attempts}
                 | Roll: ${roll}
             </div>
-        </div>
+            <div class="log-right">${now.toLocaleTimeString()}</div>
+        `;
 
-        <div class="log-right">
-            ${now.toLocaleTimeString()}
-        </div>
-    `;
-
-    document.getElementById("log").prepend(row);
-}
-
-setInterval(() => {
-
-    let now = Date.now();
-    let delta = (now - last) / 1000;
-    last = now;
-
-    seconds -= delta * speed;
-
-    if (seconds <= 0) {
-        seconds = 120;
-        RNG();
+        logEl.prepend(row);
     }
 
-    let m = Math.floor(seconds / 60);
-    let s = Math.floor(seconds % 60);
+    setInterval(() => {
 
-    document.getElementById("timer").innerHTML =
-        String(m).padStart(2,"0") + ":" + String(s).padStart(2,"0");
+        let now = Date.now();
+        let delta = (now - last) / 1000;
+        last = now;
 
-}, 100);
+        seconds -= delta * speed;
 
+        if (seconds <= 0) {
+            seconds = 120;
+            RNG();
+        }
+
+        let m = Math.floor(seconds / 60);
+        let s = Math.floor(seconds % 60);
+
+        timerEl.innerHTML =
+            String(m).padStart(2,"0") + ":" + String(s).padStart(2,"0");
+
+    }, 100);
+
+});
 </script>
-
-<div class="disclaimer">
-Fan-made simulator by @ruinoxa • Not affiliated with Sol's RNG
-</div>
 
 </body>
 </html>
