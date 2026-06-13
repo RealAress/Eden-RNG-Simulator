@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Eden Spawnrate Simulator</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Sarpanch:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+
+* { box-sizing: border-box; }
+
+body {
+    margin:0;
+    min-height:100vh;
+    font-family:"Sarpanch", sans-serif;
+    color:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:50px;
+
+    background:
+    linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)),
+    url("background1.png");
+
+    background-size:cover;
+    background-position:center;
+}
+
+/* PANEL */
+.panel {
+    position:relative;
+    background:rgba(10,15,25,0.85);
+    border:1px solid rgba(255,255,255,0.6);
+    box-shadow:0 0 25px rgba(0,0,0,0.8);
+    padding:30px;
+}
+
+.panel::before,
+.panel::after {
+    content:"";
+    position:absolute;
+    width:32px;
+    height:32px;
+}
+
+.panel::before {
+    top:-2px;
+    left:-2px;
+    border-top:3px solid white;
+    border-left:3px solid white;
+}
+
+.panel::after {
+    top:-2px;
+    right:-2px;
+    border-top:3px solid white;
+    border-right:3px solid white;
+}
+
+.corner {
+    position:absolute;
+    width:32px;
+    height:32px;
+}
+
+.corner.left {
+    left:-2px;
+    bottom:-2px;
+    border-left:3px solid white;
+    border-bottom:3px solid white;
+}
+
+.corner.right {
+    right:-2px;
+    bottom:-2px;
+    border-right:3px solid white;
+    border-bottom:3px solid white;
+}
+
+/* GAME PANEL */
+#game {
+    width:430px;
+    text-align:center;
+}
+
+h1 {
+    font-size:45px;
+    font-weight:900;
+    letter-spacing:8px;
+    text-shadow:0 0 15px white;
+}
+
+.subtitle {
+    font-size:18px;
+    letter-spacing:3px;
+}
+
+.label {
+    margin-top:25px;
+    opacity:0.7;
+    letter-spacing:4px;
+}
+
+#timer {
+    font-size:75px;
+    font-weight:900;
+    margin:35px 0;
+    text-shadow:0 0 20px white;
+}
+
+#result {
+    font-size:35px;
+    font-weight:800;
+    margin:20px;
+}
+
+/* LOG */
+#logPanel {
+    width:450px;
+    height:560px;
+}
+
+#log {
+    height:450px;
+    overflow-y:auto;
+}
+
+.log {
+    padding:15px;
+    border-bottom:1px solid rgba(255,255,255,0.2);
+}
+
+/* SPEED BUTTONS */
+.speed-buttons {
+    display:flex;
+    justify-content:space-between;
+    margin-top:15px;
+}
+
+.speed-btn {
+    position:relative;
+    width:78px;
+    height:45px;
+    font-family:"Sarpanch";
+    font-size:12px;
+    color:white;
+    background:rgba(10,15,25,0.85);
+    border:1px solid rgba(255,255,255,0.6);
+    cursor:pointer;
+}
+
+.btn-corner {
+    position:absolute;
+    width:10px;
+    height:10px;
+}
+
+.tl { top:-2px; left:-2px; border-top:2px solid white; border-left:2px solid white; }
+.tr { top:-2px; right:-2px; border-top:2px solid white; border-right:2px solid white; }
+.bl { bottom:-2px; left:-2px; border-bottom:2px solid white; border-left:2px solid white; }
+.br { bottom:-2px; right:-2px; border-bottom:2px solid white; border-right:2px solid white; }
+
+.speed-btn:hover,
+.speed-btn.active {
+    background:white;
+    color:black;
+}
+
+.sols-logo {
+    position:fixed;
+    left:25px;
+    bottom:20px;
+    width:220px;
+    opacity:0.85;
+}
+
+.disclaimer {
+    position:fixed;
+    bottom:15px;
+    left:50%;
+    transform:translateX(-50%);
+    font-size:14px;
+    color:rgba(255,255,255,0.7);
+}
+
+.success {
+    color:#66ff99;
+    text-shadow:0 0 15px lime;
+}
+
+.fail {
+    color:#ff5555;
+    text-shadow:0 0 15px red;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<img src="solsrnglogo.png" class="sols-logo">
+
+<div class="panel" id="game">
+
+<div class="corner left"></div>
+<div class="corner right"></div>
+
+<h1>EDEN RNG SIMULATOR</h1>
+
+<div class="subtitle">
+1 / 50,000 CHANCE<br>
+ROLL EVERY 2 MINUTES
+</div>
+
+<div class="label">NEXT ROLL</div>
+<div id="timer">02:00</div>
+
+<div class="speed-buttons">
+
+<button class="speed-btn active" onclick="setSpeed(1,this)">
+<div class="btn-corner tl"></div><div class="btn-corner tr"></div>
+<div class="btn-corner bl"></div><div class="btn-corner br"></div>
+1X<br>SPEED
+</button>
+
+<button class="speed-btn" onclick="setSpeed(2,this)">
+<div class="btn-corner tl"></div><div class="btn-corner tr"></div>
+<div class="btn-corner bl"></div><div class="btn-corner br"></div>
+2X<br>SPEED
+</button>
+
+<button class="speed-btn" onclick="setSpeed(5,this)">
+<div class="btn-corner tl"></div><div class="btn-corner tr"></div>
+<div class="btn-corner bl"></div><div class="btn-corner br"></div>
+5X<br>SPEED
+</button>
+
+<button class="speed-btn" onclick="setSpeed(10,this)">
+<div class="btn-corner tl"></div><div class="btn-corner tr"></div>
+<div class="btn-corner bl"></div><div class="btn-corner br"></div>
+10X<br>SPEED
+</button>
+
+</div>
+
+<div class="label">LAST RESULT</div>
+<div id="result">WAITING...</div>
+
+<div class="stats">
+🎲 TOTAL ROLLS: <span id="attempts">0</span>
+</div>
+
+</div>
+
+<div class="panel" id="logPanel">
+
+<div class="corner left"></div>
+<div class="corner right"></div>
+
+<h2>📜 RNG LOG</h2>
+<div id="log">No rolls yet...</div>
+
+</div>
+
+<script>
+
+let seconds = 120;
+let speed = 1;
+let attempts = 0;
+
+let last = Date.now();
+
+function setSpeed(value, btn) {
+    speed = value;
+
+    document.querySelectorAll(".speed-btn").forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+}
+
+function RNG() {
+
+    attempts++;
+    document.getElementById("attempts").innerHTML = attempts;
+
+    let roll = Math.floor(Math.random() * 50000) + 1;
+
+    let now = new Date();
+
+    let log = document.getElementById("log");
+    let result = document.getElementById("result");
+
+    let win = roll === 1;
+
+    result.innerHTML = win ? "✨ EDEN SPAWNED ✨" : "❌ FAILED";
+    result.className = win ? "success" : "fail";
+
+    log.innerHTML =
+    `<div class="log" style="color:${win ? "#66ff99" : "#ff5555"}">
+        <b>${win ? "✨ EDEN SPAWNED ✨" : "❌ FAILED"}</b><br>
+        Attempt #${attempts}<br>
+        Roll: ${roll}<br>
+        Date: ${now.toLocaleDateString()}<br>
+        Time: ${now.toLocaleTimeString()}
+    </div>` + log.innerHTML;
+}
+
+setInterval(() => {
+
+    let now = Date.now();
+    let delta = (now - last) / 1000;
+    last = now;
+
+    // SPEED AFFECTS TIMER PROPERLY
+    seconds -= delta * speed;
+
+    if (seconds <= 0) {
+        seconds = 120;
+        RNG();
+    }
+
+    let min = Math.floor(seconds / 60);
+    let sec = Math.floor(seconds % 60);
+
+    document.getElementById("timer").innerHTML =
+        String(min).padStart(2,"0") + ":" + String(sec).padStart(2,"0");
+
+}, 100);
+
+</script>
+
+<div class="disclaimer">
+Fan-made simulator by @ruinoxa • Not affiliated with Sol's RNG
+</div>
+
+</body>
+</html>
