@@ -41,42 +41,43 @@ body {
     border:1px solid rgba(255,255,255,0.6);
     box-shadow:0 0 25px rgba(0,0,0,0.8);
     padding:30px;
+    overflow:visible;
 }
 
-/* ✅ INNER CORNERS SYSTEM (FIXED) */
+/* ========================= */
+/* EDGE-LOCKED CORNERS FIX   */
+/* ========================= */
 .corner {
     position:absolute;
-    width:18px;
-    height:18px;
+    width:14px;
+    height:14px;
     pointer-events:none;
 }
 
-/* top */
 .corner.tl {
-    top:10px;
-    left:10px;
+    top:0;
+    left:0;
     border-top:2px solid white;
     border-left:2px solid white;
 }
 
 .corner.tr {
-    top:10px;
-    right:10px;
+    top:0;
+    right:0;
     border-top:2px solid white;
     border-right:2px solid white;
 }
 
-/* bottom */
 .corner.bl {
-    bottom:10px;
-    left:10px;
+    bottom:0;
+    left:0;
     border-bottom:2px solid white;
     border-left:2px solid white;
 }
 
 .corner.br {
-    bottom:10px;
-    right:10px;
+    bottom:0;
+    right:0;
     border-bottom:2px solid white;
     border-right:2px solid white;
 }
@@ -153,7 +154,7 @@ h1 {
     color:black;
 }
 
-/* SPEED BUTTON CORNERS (INNER STYLE) */
+/* BUTTON CORNERS (EDGE LOCKED TOO) */
 .btn-corner {
     position:absolute;
     width:10px;
@@ -161,10 +162,10 @@ h1 {
     pointer-events:none;
 }
 
-.btn-corner.tl { top:6px; left:6px; border-top:2px solid white; border-left:2px solid white; }
-.btn-corner.tr { top:6px; right:6px; border-top:2px solid white; border-right:2px solid white; }
-.btn-corner.bl { bottom:6px; left:6px; border-bottom:2px solid white; border-left:2px solid white; }
-.btn-corner.br { bottom:6px; right:6px; border-bottom:2px solid white; border-right:2px solid white; }
+.btn-corner.tl { top:0; left:0; border-top:2px solid white; border-left:2px solid white; }
+.btn-corner.tr { top:0; right:0; border-top:2px solid white; border-right:2px solid white; }
+.btn-corner.bl { bottom:0; left:0; border-bottom:2px solid white; border-left:2px solid white; }
+.btn-corner.br { bottom:0; right:0; border-bottom:2px solid white; border-right:2px solid white; }
 
 /* LOG PANEL */
 #logPanel {
@@ -272,7 +273,7 @@ h1 {
     line-height:1.1;
 }
 
-/* DISCORD CORNERS */
+/* DISCORD CORNERS (EDGE LOCKED) */
 .discord-btn .btn-corner {
     position:absolute;
     width:10px;
@@ -280,10 +281,10 @@ h1 {
     pointer-events:none;
 }
 
-.discord-btn .btn-corner.tl { top:6px; left:6px; border-top:2px solid white; border-left:2px solid white; }
-.discord-btn .btn-corner.tr { top:6px; right:6px; border-top:2px solid white; border-right:2px solid white; }
-.discord-btn .btn-corner.bl { bottom:6px; left:6px; border-bottom:2px solid white; border-left:2px solid white; }
-.discord-btn .btn-corner.br { bottom:6px; right:6px; border-bottom:2px solid white; border-right:2px solid white; }
+.discord-btn .btn-corner.tl { top:0; left:0; border-top:2px solid white; border-left:2px solid white; }
+.discord-btn .btn-corner.tr { top:0; right:0; border-top:2px solid white; border-right:2px solid white; }
+.discord-btn .btn-corner.bl { bottom:0; left:0; border-bottom:2px solid white; border-left:2px solid white; }
+.discord-btn .btn-corner.br { bottom:0; right:0; border-bottom:2px solid white; border-right:2px solid white; }
 
 .discord-btn:hover {
     background:white;
