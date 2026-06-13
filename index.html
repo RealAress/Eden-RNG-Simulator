@@ -159,7 +159,6 @@ h1 {
     color:black;
 }
 
-/* SPEED BUTTON CORNERS */
 .btn-corner {
     position:absolute;
     width:12px;
@@ -182,55 +181,24 @@ h1 {
 #log {
     height:450px;
     overflow-y:scroll;
-    overflow-x:hidden;
-
     display:flex;
     flex-direction:column;
     gap:10px;
-
     padding-right:6px;
-    scrollbar-gutter: stable;
-}
-
-#log::-webkit-scrollbar {
-    width:6px;
-}
-
-#log::-webkit-scrollbar-track {
-    background:rgba(255,255,255,0.05);
-}
-
-#log::-webkit-scrollbar-thumb {
-    background:rgba(255,255,255,0.25);
-    border-radius:10px;
-}
-
-#log::-webkit-scrollbar-thumb:hover {
-    background:rgba(255,255,255,0.4);
-}
-
-#log {
-    scrollbar-width: thin;
-    scrollbar-color: rgba(255,255,255,0.25) rgba(255,255,255,0.05);
 }
 
 /* LOG ROW */
 .log-row {
     width:100%;
     flex-shrink:0;
-
     position:relative;
     display:flex;
     justify-content:space-between;
     align-items:center;
-
     padding:12px 14px;
-
     background:rgba(10,15,25,0.75);
     border:1px solid rgba(255,255,255,0.08);
-
     font-size:14px;
-    letter-spacing:1px;
 }
 
 .log-success { color:#66ff99; }
@@ -241,14 +209,14 @@ h1 {
     font-size:12px;
 }
 
-/* CENTER UI WRAPPER (IMPORTANT FIX) */
-.ui-center {
+/* LEFT SIDE WRAPPER (IMPORTANT FIX) */
+.left-ui {
     display:flex;
     align-items:center;
     gap:20px;
 }
 
-/* DISCORD BUTTON (NOW PROPER UI ELEMENT) */
+/* DISCORD BUTTON (NOW LEFT OF GAME PANEL) */
 .discord-btn {
     width:180px;
     height:70px;
@@ -282,7 +250,7 @@ h1 {
     line-height:1.1;
 }
 
-/* CORNERS FOR DISCORD BUTTON */
+/* DISCORD CORNERS */
 .discord-btn .btn-corner {
     position:absolute;
     width:12px;
@@ -295,15 +263,6 @@ h1 {
 .discord-btn .bl { bottom:-2px; left:-2px; border-bottom:2px solid white; border-left:2px solid white; }
 .discord-btn .br { bottom:-2px; right:-2px; border-bottom:2px solid white; border-right:2px solid white; }
 
-.discord-btn:hover {
-    background:white;
-    color:black;
-}
-
-.discord-btn:hover .discord-icon {
-    filter:invert(1);
-}
-
 /* LOGO */
 .sols-logo {
     position:fixed;
@@ -311,7 +270,6 @@ h1 {
     bottom:20px;
     width:220px;
     opacity:0.85;
-    z-index:9999;
 }
 
 /* DISCLAIMER */
@@ -322,7 +280,6 @@ h1 {
     transform:translateX(-50%);
     font-size:14px;
     color:rgba(255,255,255,0.7);
-    z-index:9999;
 }
 
 </style>
@@ -331,7 +288,24 @@ h1 {
 
 <body>
 
-<!-- GAME PANEL -->
+<!-- LEFT UI GROUP (DISCORD + GAME) -->
+<div class="left-ui">
+
+<a href="https://discord.gg/ruinsvb" target="_blank" class="discord-btn">
+
+    <img src="discordicon.png" class="discord-icon">
+
+    <div class="discord-text">
+        JOIN OUR SERVER!
+    </div>
+
+    <div class="btn-corner tl"></div>
+    <div class="btn-corner tr"></div>
+    <div class="btn-corner bl"></div>
+    <div class="btn-corner br"></div>
+
+</a>
+
 <div class="panel" id="game">
 <div class="corner left"></div>
 <div class="corner right"></div>
@@ -387,32 +361,15 @@ ROLL EVERY 2 MINUTES
 
 </div>
 
-<!-- CENTER CLUSTER (LOG + DISCORD BUTTON) -->
-<div class="ui-center">
+</div>
 
-<a href="https://discord.gg/ruinsvb" target="_blank" class="discord-btn">
-
-    <img src="discordicon.png" class="discord-icon">
-
-    <div class="discord-text">
-        JOIN OUR SERVER!
-    </div>
-
-    <div class="btn-corner tl"></div>
-    <div class="btn-corner tr"></div>
-    <div class="btn-corner bl"></div>
-    <div class="btn-corner br"></div>
-
-</a>
-
+<!-- LOG PANEL -->
 <div class="panel" id="logPanel">
 <div class="corner left"></div>
 <div class="corner right"></div>
 
 <h2>📜 RNG LOG</h2>
 <div id="log"></div>
-</div>
-
 </div>
 
 <img src="solsrnglogo.png" class="sols-logo">
