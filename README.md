@@ -1,4 +1,4 @@
-# 🌌 Eden Simulator
+# 🌌 Eden RNG Simulator
 
 This project is a simulation tool only and does not track or report real Eden spawn rates.
 
