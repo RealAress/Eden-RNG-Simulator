@@ -159,6 +159,7 @@ h1 {
     color:black;
 }
 
+/* SPEED BUTTON CORNERS */
 .btn-corner {
     position:absolute;
     width:12px;
@@ -191,6 +192,28 @@ h1 {
     scrollbar-gutter: stable;
 }
 
+#log::-webkit-scrollbar {
+    width:6px;
+}
+
+#log::-webkit-scrollbar-track {
+    background:rgba(255,255,255,0.05);
+}
+
+#log::-webkit-scrollbar-thumb {
+    background:rgba(255,255,255,0.25);
+    border-radius:10px;
+}
+
+#log::-webkit-scrollbar-thumb:hover {
+    background:rgba(255,255,255,0.4);
+}
+
+#log {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255,255,255,0.25) rgba(255,255,255,0.05);
+}
+
 /* LOG ROW */
 .log-row {
     width:100%;
@@ -208,6 +231,7 @@ h1 {
 
     font-size:14px;
     letter-spacing:1px;
+
     overflow:hidden;
 }
 
@@ -229,7 +253,70 @@ h1 {
     z-index:9999;
 }
 
-/* 🔥 FIXED DISCLAIMER */
+/* DISCORD BUTTON (NEW) */
+.discord-btn {
+    position:fixed;
+    left:25px;
+    top:50%;
+    transform:translateY(-50%);
+
+    width:180px;
+    height:70px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+
+    text-decoration:none;
+    color:white;
+
+    background:rgba(10,15,25,0.85);
+    border:1px solid rgba(255,255,255,0.6);
+
+    font-family:"Sarpanch", sans-serif;
+    font-weight:700;
+    letter-spacing:1px;
+
+    overflow:visible;
+}
+
+/* ICON */
+.discord-icon {
+    width:26px;
+    height:26px;
+}
+
+/* TEXT */
+.discord-text {
+    font-size:12px;
+    text-align:center;
+    line-height:1.1;
+}
+
+/* CORNERS FOR DISCORD BUTTON */
+.discord-btn .btn-corner {
+    position:absolute;
+    width:12px;
+    height:12px;
+    pointer-events:none;
+}
+
+.discord-btn .tl { top:-2px; left:-2px; border-top:2px solid white; border-left:2px solid white; }
+.discord-btn .tr { top:-2px; right:-2px; border-top:2px solid white; border-right:2px solid white; }
+.discord-btn .bl { bottom:-2px; left:-2px; border-bottom:2px solid white; border-left:2px solid white; }
+.discord-btn .br { bottom:-2px; right:-2px; border-bottom:2px solid white; border-right:2px solid white; }
+
+.discord-btn:hover {
+    background:white;
+    color:black;
+}
+
+.discord-btn:hover .discord-icon {
+    filter:invert(1);
+}
+
+/* DISCLAIMER */
 .disclaimer {
     position:fixed;
     bottom:15px;
@@ -238,17 +325,6 @@ h1 {
     font-size:14px;
     color:rgba(255,255,255,0.7);
     z-index:9999;
-    text-align:center;
-}
-
-.disclaimer a {
-    color:white;
-    text-decoration:none;
-    font-weight:700;
-}
-
-.disclaimer a:hover {
-    text-shadow:0 0 10px white;
 }
 
 </style>
@@ -256,6 +332,22 @@ h1 {
 </head>
 
 <body>
+
+<!-- DISCORD BUTTON -->
+<a href="https://discord.gg/ruinsvb" target="_blank" class="discord-btn">
+
+    <img src="discordicon.png" class="discord-icon">
+
+    <div class="discord-text">
+        JOIN OUR SERVER!
+    </div>
+
+    <div class="btn-corner tl"></div>
+    <div class="btn-corner tr"></div>
+    <div class="btn-corner bl"></div>
+    <div class="btn-corner br"></div>
+
+</a>
 
 <div class="panel" id="game">
 <div class="corner left"></div>
@@ -322,7 +414,6 @@ ROLL EVERY 2 MINUTES
 
 <img src="solsrnglogo.png" class="sols-logo">
 
-<!-- UPDATED DISCORD LINK -->
 <div class="disclaimer">
 Fan-made simulator by <a href="https://discord.com/users/542875554429272094" target="_blank">@ruinoxa</a> • Not affiliated with Sol's RNG
 </div>
