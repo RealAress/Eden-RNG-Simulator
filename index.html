@@ -512,10 +512,26 @@ function RNG() {
     let now = new Date();
     let win = roll === 1;
 
+    // UPDATE LAST RESULT
+    let result = document.getElementById("result");
+
+    if (win) {
+        result.innerHTML = "✨ EDEN SPAWNED ✨";
+        result.style.color = "#66ff99";
+    } else {
+        result.innerHTML = "❌ FAILED";
+        result.style.color = "#ff4d4d";
+    }
+
+
+    // CREATE LOG ROW
     let row = document.createElement("div");
+
     row.className = "log-row " + (win ? "log-success" : "log-fail");
 
+
     row.innerHTML = `
+
         <div class="corner tl"></div>
         <div class="corner tr"></div>
         <div class="corner bl"></div>
@@ -523,16 +539,19 @@ function RNG() {
 
         <div>
             <b>${win ? "SPAWNED" : "FAILED"}</b>
-            | #${attempts}
+            | Attempt #${attempts}
             | Roll: ${roll}
         </div>
 
         <div class="log-right">
             ${now.toLocaleTimeString()}
         </div>
+
     `;
 
+
     document.getElementById("log").prepend(row);
+
 }
 
 setInterval(() => {
