@@ -1,4 +1,4 @@
-# Eden RNG Simulator
+# 🎲 Eden RNG Simulator
 
 A fan-made RNG simulator inspired by **Sol's RNG** on Roblox.
 
@@ -7,52 +7,122 @@ A fan-made RNG simulator inspired by **Sol's RNG** on Roblox.
 
 ---
 
-# 📌 Latest Version Update
+## 🌐 Live Demo
 
-## Version: 1.0.0 (Latest)
-
-### ✨ Major Updates
-
-- Added complete Eden RNG Simulator interface
-- Added RNG rolling system with:
-  - 1 / 50,000 Eden spawn chance
-  - 2 minute default roll timer
-  - Attempt tracking system
-  - Roll number display
-- Added speed controls:
-  - 1X SPEED
-  - 2X SPEED
-  - 5X SPEED
-  - 10X SPEED
+> *(Add your GitHub Pages link here once deployed)*  
+`https://yourusername.github.io/eden-rng-simulator/`
 
 ---
 
-# 🎨 UI Improvements
+## 📌 Version
 
-## HUD Corner System
+### **v1.0.1 (Hotfix Update)**
 
-- Reworked all UI corner designs
-- Added consistent L-shaped HUD corners to:
+### 🛠️ Today's Fixes
 
-  - Main Eden panel
-  - RNG log panel
-  - Speed buttons
-  - Discord server button
-  - RNG attempt logs
-
-- Changed corners from floating/outside style to edge-connected style
-- Improved Sol's RNG inspired interface appearance
+- Fixed background not displaying due to incorrect file path resolution
+- Corrected CSS asset path:
+  - ❌ `url("assets/background1.png")`
+  - ✅ `url("../assets/background1.png")`
+- Verified proper relative path handling between `/css/` and `/assets/`
+- Ensured full compatibility with:
+  - Local server (127.0.0.1)
+  - GitHub Pages hosting
 
 ---
 
-# 📜 RNG Log Updates
+## 📁 Project Structure
 
-### Added:
+/index.html
+/css/styles.css
+/js/script.js
+/assets/
 
-- Live attempt logging
-- Attempt number tracking
-- Roll number display
-- Timestamp display
-- Success/failure status
+✔ Fully compatible with GitHub Pages  
+✔ No absolute paths required  
+✔ Portable folder structure
 
-Example:
+---
+
+## 🎮 Features
+
+### 🎲 RNG System
+- 1 / 50,000 rare Eden spawn chance
+- Automatic roll every 2 minutes
+- Attempt tracking system
+- Roll result display system
+
+### ⚡ Speed Controls
+- 1X SPEED
+- 2X SPEED
+- 5X SPEED
+- 10X SPEED
+
+---
+
+## 🎨 UI System
+
+### 🧩 HUD Design
+- L-shaped corner UI system
+- Consistent styling across:
+  - Main panel
+  - Log panel
+  - Buttons
+  - Discord button
+  - Log entries
+
+### 🖥️ Interface Style
+- Dark sci-fi RNG theme
+- Sol's RNG inspired UI
+- Glow-based typography
+- High contrast visual feedback
+
+---
+
+## 📜 RNG Log System
+
+- Live roll history tracking
+- Attempt numbering
+- Success / fail indicators
+- Timestamp logging
+- Scrollable log panel with custom scrollbar
+
+---
+
+## 🚀 Deployment
+
+### Works On:
+- ✔ Localhost (Live Server / VS Code)
+- ✔ GitHub Pages
+- ✔ Any static hosting service
+
+### Requirements:
+- Keep folder structure unchanged
+- Ensure correct asset paths
+- Do not use absolute `/css/` or `/assets/` paths
+
+---
+
+## ⚠️ Notes
+
+- This is a **fan-made project**
+- Not affiliated with **Sol's RNG**
+- All assets and systems are original or inspired design
+
+---
+
+## 👤 Author
+
+**@ruinoxa**
+
+Discord: https://discord.gg/ruinsvb
+
+---
+
+## ⭐ Future Updates (Planned)
+
+- Sound effects for rolls
+- Rarity animations
+- Mobile UI optimization
+- Luck multiplier system
+- Inventory / collection system
