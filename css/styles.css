@@ -1,0 +1,365 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin:0;
+    min-height:100vh;
+    font-family:"Sarpanch", sans-serif;
+    color:white;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:50px;
+
+    background:
+    linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)),
+    url("../assets/background1.png");
+
+    background-size:cover;
+    background-position:center;
+
+    overflow:hidden;
+}
+
+/* PANELS */
+.panel {
+    position:relative;
+    background:rgba(10,15,25,0.85);
+    border:1px solid rgba(255,255,255,0.6);
+    box-shadow:0 0 25px rgba(0,0,0,0.8);
+    padding:30px;
+    overflow:visible;
+}
+
+/* ========================= */
+/* EDGE-LOCKED PANEL CORNERS */
+/* ========================= */
+.corner {
+    position:absolute;
+    width:14px;
+    height:14px;
+    pointer-events:none;
+}
+
+.corner.tl {
+    top:0;
+    left:0;
+    border-top:2px solid white;
+    border-left:2px solid white;
+}
+
+.corner.tr {
+    top:0;
+    right:0;
+    border-top:2px solid white;
+    border-right:2px solid white;
+}
+
+.corner.bl {
+    bottom:0;
+    left:0;
+    border-bottom:2px solid white;
+    border-left:2px solid white;
+}
+
+.corner.br {
+    bottom:0;
+    right:0;
+    border-bottom:2px solid white;
+    border-right:2px solid white;
+}
+
+/* GAME PANEL */
+#game {
+    width:430px;
+    text-align:center;
+}
+
+h1 {
+    font-size:45px;
+    font-weight:900;
+    letter-spacing:8px;
+    text-shadow:0 0 15px white;
+}
+
+.subtitle {
+    font-size:18px;
+    letter-spacing:3px;
+}
+
+.label {
+    margin-top:25px;
+    opacity:0.7;
+    letter-spacing:4px;
+}
+
+#timer {
+    font-size:75px;
+    font-weight:900;
+    margin:35px 0;
+    text-shadow:0 0 20px white;
+}
+
+#result {
+    font-size:35px;
+    font-weight:800;
+    margin:20px;
+}
+
+/* SPEED BUTTONS */
+.speed-buttons {
+    display:flex;
+    justify-content:space-between;
+    margin-top:15px;
+}
+
+.speed-btn {
+    width:78px;
+    height:50px;
+
+    position:relative;
+
+    font-family:"Sarpanch";
+    font-size:12px;
+    font-weight:700;
+    letter-spacing:1px;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+
+    color:white;
+    background:rgba(10,15,25,0.85);
+    border:1px solid rgba(255,255,255,0.6);
+    cursor:pointer;
+}
+
+.speed-btn:hover,
+.speed-btn.active {
+    background:white;
+    color:black;
+}
+
+/* BUTTON CORNERS */
+.btn-corner {
+    position:absolute;
+    width:10px;
+    height:10px;
+    pointer-events:none;
+}
+
+.btn-corner.tl { top:0; left:0; border-top:2px solid white; border-left:2px solid white; }
+.btn-corner.tr { top:0; right:0; border-top:2px solid white; border-right:2px solid white; }
+.btn-corner.bl { bottom:0; left:0; border-bottom:2px solid white; border-left:2px solid white; }
+.btn-corner.br { bottom:0; right:0; border-bottom:2px solid white; border-right:2px solid white; }
+
+/* LOG PANEL */
+#logPanel {
+    width:450px;
+    height:560px;
+    overflow:hidden;
+}
+
+#log {
+    height:450px;
+    overflow-y:scroll;
+    overflow-x:hidden;
+
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+
+    padding-right:6px;
+}
+
+/* SCROLLBAR */
+#log::-webkit-scrollbar {
+    width:10px;
+}
+
+#log::-webkit-scrollbar-track {
+    background:rgba(255,255,255,0.08);
+    border:1px solid rgba(255,255,255,0.15);
+}
+
+#log::-webkit-scrollbar-thumb {
+    background:white;
+    border:2px solid rgba(0,0,0,0.6);
+}
+
+#log::-webkit-scrollbar-thumb:hover {
+    background:#eaeaea;
+}
+
+#log {
+    scrollbar-width:auto;
+    scrollbar-color:white rgba(255,255,255,0.08);
+}
+
+/* ========================= */
+/* LOG ROW + CORNERS FIX     */
+/* ========================= */
+.log-row {
+    position:relative;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:12px 14px;
+
+    background:rgba(10,15,25,0.75);
+    border:1px solid rgba(255,255,255,0.08);
+
+    font-size:14px;
+}
+
+.log-row .corner {
+    position:absolute;
+    width:10px;
+    height:10px;
+    pointer-events:none;
+}
+
+.log-row .corner.tl {
+    top:0;
+    left:0;
+    border-top:2px solid white;
+    border-left:2px solid white;
+}
+
+.log-row .corner.tr {
+    top:0;
+    right:0;
+    border-top:2px solid white;
+    border-right:2px solid white;
+}
+
+.log-row .corner.bl {
+    bottom:0;
+    left:0;
+    border-bottom:2px solid white;
+    border-left:2px solid white;
+}
+
+.log-row .corner.br {
+    bottom:0;
+    right:0;
+    border-bottom:2px solid white;
+    border-right:2px solid white;
+}
+
+.log-success { color:#66ff99; }
+.log-fail { color:#ff4d4d; }
+
+.log-right {
+    opacity:0.7;
+    font-size:12px;
+}
+
+/* LEFT UI */
+.left-ui {
+    display:flex;
+    align-items:center;
+    gap:20px;
+}
+
+/* DISCORD SERVER BUTTON */
+.discord-btn {
+    width:180px;
+    height:70px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+
+    position:relative;
+
+    text-decoration:none;
+    color:white;
+
+    background:rgba(10,15,25,0.85);
+    border:1px solid rgba(255,255,255,0.6);
+
+    font-family:"Sarpanch", sans-serif;
+    font-weight:700;
+    letter-spacing:1px;
+
+    transition:0.2s;
+}
+
+.discord-btn:hover {
+    background:white;
+    color:black;
+}
+
+.discord-icon {
+    width:26px;
+    height:26px;
+}
+
+.discord-text {
+    font-size:12px;
+    text-align:center;
+    line-height:1.1;
+}
+
+
+/* SERVER BUTTON EDGE CORNERS */
+.discord-btn .btn-corner {
+    position:absolute;
+    width:10px;
+    height:10px;
+    pointer-events:none;
+}
+
+.discord-btn .tl {
+    top:0;
+    left:0;
+    border-top:2px solid white;
+    border-left:2px solid white;
+}
+
+.discord-btn .tr {
+    top:0;
+    right:0;
+    border-top:2px solid white;
+    border-right:2px solid white;
+}
+
+.discord-btn .bl {
+    bottom:0;
+    left:0;
+    border-bottom:2px solid white;
+    border-left:2px solid white;
+}
+
+.discord-btn .br {
+    bottom:0;
+    right:0;
+    border-bottom:2px solid white;
+    border-right:2px solid white;
+}
+
+/* LOGO */
+.sols-logo {
+    position:fixed;
+    left:25px;
+    bottom:20px;
+    width:220px;
+    opacity:0.85;
+}
+
+/* DISCLAIMER */
+.disclaimer {
+    position:fixed;
+    bottom:15px;
+    left:50%;
+    transform:translateX(-50%);
+    font-size:14px;
+    color:rgba(255,255,255,0.7);
+}

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Eden RNG Simulator</title>
+
+<link rel="icon" href="assets/solsrnglogo.png">
+
+<link href="https://fonts.googleapis.com/css2?family=Sarpanch:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/styles.css">
+
+</head>
+
+<body>
+
+<div class="left-ui">
+
+<a href="https://discord.gg/ruinsvb" target="_blank" rel="noopener" class="discord-btn">
+
+    <img src="assets/discordicon.png" class="discord-icon" alt="Discord">
+
+    <div class="discord-text">
+        JOIN OUR SERVER!
+    </div>
+
+    <div class="btn-corner tl"></div>
+    <div class="btn-corner tr"></div>
+    <div class="btn-corner bl"></div>
+    <div class="btn-corner br"></div>
+
+</a>
+
+<div class="panel" id="game">
+
+<div class="corner tl"></div>
+<div class="corner tr"></div>
+<div class="corner bl"></div>
+<div class="corner br"></div>
+
+<h1>EDEN RNG SIMULATOR</h1>
+
+<div class="subtitle">
+1 / 50,000 CHANCE<br>
+ROLL EVERY 2 MINUTES
+</div>
+
+<div class="label">NEXT ROLL</div>
+<div id="timer">02:00</div>
+
+<div class="speed-buttons">
+
+<button class="speed-btn active" onclick="setSpeed(1,this)">
+1X<br>
+SPEED
+
+<div class="btn-corner tl"></div>
+<div class="btn-corner tr"></div>
+<div class="btn-corner bl"></div>
+<div class="btn-corner br"></div>
+</button>
+
+
+<button class="speed-btn" onclick="setSpeed(2,this)">
+2X<br>
+SPEED
+
+<div class="btn-corner tl"></div>
+<div class="btn-corner tr"></div>
+<div class="btn-corner bl"></div>
+<div class="btn-corner br"></div>
+</button>
+
+
+<button class="speed-btn" onclick="setSpeed(5,this)">
+5X<br>
+SPEED
+
+<div class="btn-corner tl"></div>
+<div class="btn-corner tr"></div>
+<div class="btn-corner bl"></div>
+<div class="btn-corner br"></div>
+</button>
+
+
+<button class="speed-btn" onclick="setSpeed(10,this)">
+10X<br>
+SPEED
+
+<div class="btn-corner tl"></div>
+<div class="btn-corner tr"></div>
+<div class="btn-corner bl"></div>
+<div class="btn-corner br"></div>
+</button>
+
+</div>
+
+<div class="label">LAST RESULT</div>
+<div id="result">WAITING...</div>
+
+</div>
+
+</div>
+
+<div class="panel" id="logPanel">
+
+<div class="corner tl"></div>
+<div class="corner tr"></div>
+<div class="corner bl"></div>
+<div class="corner br"></div>
+
+<h2>📜 RNG LOG</h2>
+<div id="log"></div>
+
+</div>
+
+<img src="assets/solsrnglogo.png" class="sols-logo">
+
+<div class="disclaimer">
+Fan-made simulator by 
+<a href="https://discord.com/users/542875554429272094" target="_blank">
+@ruinoxa
+</a>
+• Not affiliated with Sol's RNG
+</div>
+
+<script src="js/script.js" defer></script>
+
+</body>
+</html>
