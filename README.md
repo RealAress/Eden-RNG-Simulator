@@ -33,10 +33,10 @@ A fan-made RNG simulator inspired by **Sol's RNG** on Roblox.
 
 ## 📁 Project Structure
 
-/index.html
-/css/styles.css
-/js/script.js
-/assets/
+> /index.html
+> /css/styles.css
+> /js/script.js
+> /assets/
 
 ✔ Fully compatible with GitHub Pages  
 ✔ No absolute paths required  
