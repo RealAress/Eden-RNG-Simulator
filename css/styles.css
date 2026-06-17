@@ -354,13 +354,19 @@ h1 {
     opacity:0.85;
 }
 
-/* THE LIMBO LOGO */
-.limbo-logo {
+/* THE LIMBO TEXT LOGO */
+.limbo-title {
     position:fixed;
     top:25px;
     left:25px;
-    width:300px;
-    opacity:0.9;
+
+    font-family:"Sarpanch", sans-serif;
+    color:black;
+    -webkit-text-stroke:1px white;
+
+    font-weight:900;
+    letter-spacing:5px;
+    font-size:60px;
 }
 
 /* DISCLAIMER */
