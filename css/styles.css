@@ -393,6 +393,13 @@ h1 {
     text-align:center;
 }
 
+.calculator h2 {
+    text-align:center;
+    white-space:nowrap;
+    font-family:"Sarpanch", sans-serif;
+    letter-spacing:3px;
+}
+
 .calc-box {
     position:relative;
     width:220px;
