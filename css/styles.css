@@ -385,3 +385,63 @@ h1 {
     font-size:14px;
     color:rgba(255,255,255,0.7);
 }
+
+/* ROLL CALCULATOR */
+
+.calculator {
+    width:300px;
+    text-align:center;
+}
+
+.calculator h2 {
+    letter-spacing:3px;
+}
+
+#attemptInput {
+    width:200px;
+    height:40px;
+
+    margin:15px;
+
+    font-family:"Sarpanch";
+    font-size:18px;
+    text-align:center;
+
+    background:rgba(10,15,25,0.85);
+    color:white;
+
+    border:1px solid rgba(255,255,255,0.6);
+}
+
+
+.calc-btn {
+
+    width:160px;
+    height:45px;
+
+    font-family:"Sarpanch";
+    font-weight:800;
+
+    color:white;
+    background:rgba(10,15,25,0.85);
+
+    border:1px solid rgba(255,255,255,0.6);
+
+    cursor:pointer;
+}
+
+
+.calc-btn:hover {
+    background:white;
+    color:black;
+}
+
+
+#calcResult {
+
+    margin-top:20px;
+
+    font-size:22px;
+    font-weight:800;
+
+}
