@@ -354,6 +354,15 @@ h1 {
     opacity:0.85;
 }
 
+/* THE LIMBO LOGO */
+.limbo-logo {
+    position:fixed;
+    top:25px;
+    left:25px;
+    width:300px;
+    opacity:0.9;
+}
+
 /* DISCLAIMER */
 .disclaimer {
     position:fixed;
