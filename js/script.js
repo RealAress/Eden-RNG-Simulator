@@ -82,35 +82,38 @@ setInterval(() => {
 
 function calculateTime(){
 
-    let attempt = document.getElementById("attemptInput").value;
+    const attempt = Number(document.getElementById("attemptInput").value);
 
-    if(attempt <= 0){
-        document.getElementById("calcResult").innerHTML = "INVALID";
+    const result = document.getElementById("calcResult");
+
+
+    if(!attempt || attempt <= 0){
+        result.innerHTML = "INVALID ATTEMPT";
         return;
     }
 
 
     let totalSeconds = attempt * 120;
 
-
     let hours = Math.floor(totalSeconds / 3600);
     let minutes = Math.floor((totalSeconds % 3600) / 60);
 
 
-    let result = "";
+    let output = "";
 
 
     if(hours > 0){
-        result += hours + " HOURS ";
+        output += hours + " HOURS ";
     }
-
 
     if(minutes > 0){
-        result += minutes + " MINUTES";
+        output += minutes + " MINUTES";
     }
 
 
-    document.getElementById("calcResult").innerHTML =
-        attempt + " ATTEMPTS = " + result;
-
+    result.innerHTML =
+        attempt + " ATTEMPTS = " + output;
 }
+
+
+document.getElementById("calcButton").onclick = calculateTime;
