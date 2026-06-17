@@ -79,3 +79,38 @@ setInterval(() => {
         String(m).padStart(2,"0") + ":" + String(s).padStart(2,"0");
 
 }, 100);
+
+function calculateTime(){
+
+    let attempt = document.getElementById("attemptInput").value;
+
+    if(attempt <= 0){
+        document.getElementById("calcResult").innerHTML = "INVALID";
+        return;
+    }
+
+
+    let totalSeconds = attempt * 120;
+
+
+    let hours = Math.floor(totalSeconds / 3600);
+    let minutes = Math.floor((totalSeconds % 3600) / 60);
+
+
+    let result = "";
+
+
+    if(hours > 0){
+        result += hours + " HOURS ";
+    }
+
+
+    if(minutes > 0){
+        result += minutes + " MINUTES";
+    }
+
+
+    document.getElementById("calcResult").innerHTML =
+        attempt + " ATTEMPTS = " + result;
+
+}
