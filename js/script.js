@@ -2,6 +2,7 @@ let seconds = 120;
 let speed = 1;
 let attempts = 0;
 let last = Date.now();
+let edenActive = false;
 
 function setSpeed(v, btn) {
     speed = v;
@@ -10,33 +11,30 @@ function setSpeed(v, btn) {
 }
 
 function RNG() {
-
     attempts++;
 
     let roll = Math.floor(Math.random() * 50000) + 1;
     let now = new Date();
     let win = roll === 50000;
 
-    // UPDATE LAST RESULT
     let result = document.getElementById("result");
 
     if (win) {
         result.innerHTML = "✨ EDEN SPAWNED ✨";
         result.style.color = "#66ff99";
+
+        edenActive = true;
+        seconds = 1800;
     } else {
         result.innerHTML = "❌ FAILED";
         result.style.color = "#ff4d4d";
     }
 
-
-    // CREATE LOG ROW
     let row = document.createElement("div");
 
     row.className = "log-row " + (win ? "log-success" : "log-fail");
 
-
     row.innerHTML = `
-
         <div class="corner tl"></div>
         <div class="corner tr"></div>
         <div class="corner bl"></div>
@@ -51,16 +49,12 @@ function RNG() {
         <div class="log-right">
             ${now.toLocaleTimeString()}
         </div>
-
     `;
 
-
     document.getElementById("log").prepend(row);
-
 }
 
 setInterval(() => {
-
     let now = Date.now();
     let delta = (now - last) / 1000;
     last = now;
@@ -68,8 +62,19 @@ setInterval(() => {
     seconds -= delta * speed;
 
     if (seconds <= 0) {
-        seconds = 120;
-        RNG();
+
+        if (edenActive) {
+            edenActive = false;
+            seconds = 120;
+
+            let result = document.getElementById("result");
+            result.innerHTML = "❌ EDEN DESPAWNED";
+            result.style.color = "#ff4d4d";
+
+        } else {
+            seconds = 120;
+            RNG();
+        }
     }
 
     let m = Math.floor(seconds / 60);
@@ -80,49 +85,42 @@ setInterval(() => {
 
 }, 100);
 
-function calculateTime(){
+function calculateTime() {
 
     const attempt = Number(document.getElementById("attemptInput").value);
-
     const result = document.getElementById("calcResult");
 
-
-    if(!attempt || attempt <= 0){
+    if (!attempt || attempt <= 0) {
         result.innerHTML = "INVALID ATTEMPT";
         return;
     }
 
-
     let totalSeconds = attempt * 120;
 
     let days = Math.floor(totalSeconds / 86400);
-
     let hours = Math.floor((totalSeconds % 86400) / 3600);
-
     let minutes = Math.floor((totalSeconds % 3600) / 60);
-
 
     let output = "";
 
-
-    if(days > 0){
+    if (days > 0) {
         output += days + " DAYS ";
     }
 
-    if(hours > 0){
+    if (hours > 0) {
         output += hours + " HOURS ";
     }
 
-    if(minutes > 0){
-    output += minutes + " MINUTES";
+    if (minutes > 0) {
+        output += minutes + " MINUTES";
     }
 
-    if(output === ""){
-    output = "0 MINUTES";
-}
+    if (output === "") {
+        output = "0 MINUTES";
+    }
 
     result.innerHTML =
-    attempt.toLocaleString() + " ATTEMPTS = " + output.trim();
+        attempt.toLocaleString() + " ATTEMPTS = " + output.trim();
 }
 
 document.getElementById("calcButton").onclick = calculateTime;
