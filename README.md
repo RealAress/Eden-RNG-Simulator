@@ -64,14 +64,9 @@ Added a special Eden active timer.
 
 When Eden appears:
 
-- Timer changes from:
-02:00
+- Timer changes from: 02:00 to: 30:00
 
-to:
-30:00
-
-Eden remains active for:
-30 Minutes
+Eden remains active for: 30 Minutes
 
 After the timer reaches zero:
 ❌ EDEN DESPAWNED
