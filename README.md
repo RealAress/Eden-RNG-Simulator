@@ -14,45 +14,161 @@ A fan-made RNG simulator inspired by **Sol's RNG** on Roblox.
 
 ---
 
-## 📌 Version
+# 📌 Version
 
-### **v1.0.1 (Hotfix Update)**
-
-### 🛠️ Today's Fixes
-
-- Fixed background not displaying due to incorrect file path resolution
-- Corrected CSS asset path:
-  - ❌ `url("assets/background1.png")`
-  - ✅ `url("../assets/background1.png")`
-- Verified proper relative path handling between `/css/` and `/assets/`
-- Ensured full compatibility with:
-  - Local server (127.0.0.1)
-  - GitHub Pages hosting
+## **v1.1.0 (Major Feature Update)**
 
 ---
 
-## 📁 Project Structure
+# ✨ New Features Added
 
+## ⏱️ Roll Calculator
+
+Added a new **Roll Calculator** panel.
+
+Features:
+
+- Calculate total waiting time based on attempts
+- Uses the current 2 minute roll timer
+- Converts time into:
+  - Days
+  - Hours
+  - Minutes
+- Comma formatting for large attempt numbers
+
+Example:
+5,555 ATTEMPTS = 7 DAYS 17 HOURS 10 MINUTES
+
+---
+
+# 🌌 Eden Spawn System Update
+
+Added a special Eden spawn event system.
+
+## ✨ Eden Spawn
+
+- Eden now spawns only when:
+Roll: 50,000
+
+- Chance remains:
+1 / 50,000
+
+- Eden spawn message:
+✨ EDEN SPAWNED ✨
+
+---
+
+# ⏳ Eden Despawn Timer
+
+Added a special Eden active timer.
+
+When Eden appears:
+
+- Timer changes from:
+02:00
+
+to:
+30:00
+
+Eden remains active for:
+30 Minutes
+
+After the timer reaches zero:
+❌ EDEN DESPAWNED
+
+The simulator automatically returns to normal:
+Roll every 2 minutes
+
+---
+
+# 📜 RNG Log Improvements
+
+Updated RNG logs:
+
+### Added:
+
+- Number formatting
+
+Before:
+Roll: 10970
+
+After:
+Roll: 10,970
+
+- Attempt formatting
+
+Before:
+Attempt #10000
+
+After:
+Attempt #10,000
+
+- Eden spawn logs
+- Eden despawn result display
+
+---
+
+# 🎨 UI Updates
+
+## Roll Calculator Panel
+
+Added:
+
+- New calculator window
+- Matching HUD corner design
+- Sarpanch font styling
+- Same dark sci-fi theme
+
+Includes:
+
+- Attempt input box
+- Calculate button
+- Result display
+
+---
+
+# 🔧 Code Improvements
+
+Updated JavaScript systems:
+
+- Improved RNG handling
+- Added Eden state tracking
+- Added Eden active timer system
+- Improved calculator calculations
+- Added formatted number output
+
+---
+
+# 📁 Project Structure
 - /index.html
 - /css/styles.css
 - /js/script.js
 - /assets/
 
 ✔ Fully compatible with GitHub Pages  
-✔ No absolute paths required  
-✔ Portable folder structure
+✔ Works with local servers  
+✔ Portable folder structure  
+✔ No absolute paths required
 
 ---
 
-## 🎮 Features
+# 🎮 Current Features
 
-### 🎲 RNG System
-- 1 / 50,000 rare Eden spawn chance
-- Automatic roll every 2 minutes
-- Attempt tracking system
-- Roll result display system
+## 🎲 RNG System
 
-### ⚡ Speed Controls
+- 1 / 50,000 Eden spawn chance
+- Automatic rolls every 2 minutes
+- Attempt tracking
+- Roll result display
+- Eden spawn event
+- Eden despawn timer
+
+---
+
+## ⚡ Speed Controls
+
+Available speeds:
+
 - 1X SPEED
 - 2X SPEED
 - 5X SPEED
@@ -60,69 +176,91 @@ A fan-made RNG simulator inspired by **Sol's RNG** on Roblox.
 
 ---
 
-## 🎨 UI System
+## 🧮 Calculator System
 
-### 🧩 HUD Design
-- L-shaped corner UI system
-- Consistent styling across:
-  - Main panel
-  - Log panel
-  - Buttons
-  - Discord button
-  - Log entries
+- Attempt based time calculation
+- Days / Hours / Minutes conversion
+- Large number formatting
 
-### 🖥️ Interface Style
+---
+
+# 🎨 UI System
+
+## HUD Design
+
+L-shaped corner UI system applied to:
+
+- Eden RNG panel
+- RNG log panel
+- Speed buttons
+- Discord button
+- Calculator panel
+- Calculator buttons
+- RNG log entries
+
+---
+
+## 🖥️ Interface Style
+
 - Dark sci-fi RNG theme
-- Sol's RNG inspired UI
-- Glow-based typography
-- High contrast visual feedback
+- Sol's RNG inspired design
+- Sarpanch typography
+- Glow effects
+- High contrast results
 
 ---
 
-## 📜 RNG Log System
+# 📜 RNG Log System
 
-- Live roll history tracking
-- Attempt numbering
-- Success / fail indicators
-- Timestamp logging
-- Scrollable log panel with custom scrollbar
+Includes:
+
+- Live roll history
+- Attempt tracking
+- Roll numbers
+- Success/failure colors
+- Timestamp display
+- Scrollable log panel
 
 ---
 
-## 🚀 Deployment
+# 🚀 Deployment
 
-### Works On:
-- ✔ Localhost (Live Server / VS Code)
+## Works On:
+
+- ✔ Localhost (VS Code Live Server)
 - ✔ GitHub Pages
-- ✔ Any static hosting service
+- ✔ Static hosting services
 
-### Requirements:
+## Requirements:
+
 - Keep folder structure unchanged
-- Ensure correct asset paths
-- Do not use absolute `/css/` or `/assets/` paths
+- Keep `/css/`, `/js/`, and `/assets/` folders together
+- Use relative paths only
 
 ---
 
-## ⚠️ Notes
+# ⚠️ Notes
 
 - This is a **fan-made project**
 - Not affiliated with **Sol's RNG**
-- All assets and systems are original or inspired design
+- Inspired by RNG mechanics and UI design
 
 ---
 
-## 👤 Author
+# 👤 Author
 
 **@ruinoxa**
 
-Discord: https://discord.gg/ruinsvb
+Discord:
+`https://discord.gg/ruinsvb`
 
 ---
 
-## ⭐ Future Updates (Planned)
+# ⭐ Future Updates (Planned)
 
 - Sound effects for rolls
 - Rarity animations
 - Mobile UI optimization
 - Luck multiplier system
 - Inventory / collection system
+- More rare events
