@@ -95,25 +95,34 @@ function calculateTime(){
 
     let totalSeconds = attempt * 120;
 
-    let hours = Math.floor(totalSeconds / 3600);
+    let days = Math.floor(totalSeconds / 86400);
+
+    let hours = Math.floor((totalSeconds % 86400) / 3600);
+
     let minutes = Math.floor((totalSeconds % 3600) / 60);
 
 
     let output = "";
 
 
+    if(days > 0){
+        output += days + " DAYS ";
+    }
+
     if(hours > 0){
         output += hours + " HOURS ";
     }
 
     if(minutes > 0){
-        output += minutes + " MINUTES";
+    output += minutes + " MINUTES";
     }
 
-
-    result.innerHTML =
-        attempt.toLocaleString() + " ATTEMPTS = " + output;
+    if(output === ""){
+    output = "0 MINUTES";
 }
 
+    result.innerHTML =
+    attempt.toLocaleString() + " ATTEMPTS = " + output.trim();
+}
 
 document.getElementById("calcButton").onclick = calculateTime;
