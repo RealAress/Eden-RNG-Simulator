@@ -15,7 +15,7 @@ function RNG() {
 
     let roll = Math.floor(Math.random() * 50000) + 1;
     let now = new Date();
-    let win = roll === 1;
+    let win = roll === 50000;
 
     // UPDATE LAST RESULT
     let result = document.getElementById("result");
