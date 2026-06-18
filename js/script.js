@@ -44,8 +44,8 @@ function RNG() {
 
         <div>
             <b>${win ? "SPAWNED" : "FAILED"}</b>
-            | Attempt #${attempts}
-            | Roll: ${roll}
+            | Attempt #${attempts.toLocaleString()}
+            | Roll: ${roll.toLocaleString()}
         </div>
 
         <div class="log-right">
@@ -112,7 +112,7 @@ function calculateTime(){
 
 
     result.innerHTML =
-        attempt + " ATTEMPTS = " + output;
+        attempt.toLocaleString() + " ATTEMPTS = " + output;
 }
 
 
