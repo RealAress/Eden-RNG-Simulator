@@ -123,4 +123,14 @@ function calculateTime() {
         attempt.toLocaleString() + " ATTEMPTS = " + output.trim();
 }
 
-document.getElementById("calcButton").onclick = calculateTime;
+let calcButton = document.getElementById("calcButton");
+
+if (calcButton) {
+    calcButton.onclick = calculateTime;
+}
+
+function closeWarning() {
+
+    document.getElementById("warning").style.display = "none";
+
+}
