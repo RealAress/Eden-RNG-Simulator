@@ -501,6 +501,8 @@ h1 {
 }
 
 
+/* WARNING BOX */
+
 .warning-box {
 
     width:500px;
@@ -521,6 +523,67 @@ h1 {
 
 }
 
+
+/* WARNING BOX FOUR CORNERS */
+
+.warning-box .corner {
+
+    position:absolute;
+
+    width:14px;
+    height:14px;
+
+    pointer-events:none;
+
+}
+
+
+.warning-box .corner.tl {
+
+    top:0;
+    left:0;
+
+    border-top:2px solid white;
+    border-left:2px solid white;
+
+}
+
+
+.warning-box .corner.tr {
+
+    top:0;
+    right:0;
+
+    border-top:2px solid white;
+    border-right:2px solid white;
+
+}
+
+
+.warning-box .corner.bl {
+
+    bottom:0;
+    left:0;
+
+    border-bottom:2px solid white;
+    border-left:2px solid white;
+
+}
+
+
+.warning-box .corner.br {
+
+    bottom:0;
+    right:0;
+
+    border-bottom:2px solid white;
+    border-right:2px solid white;
+
+}
+
+
+/* CLOSE BUTTON */
+
 .close-warning {
 
     position:absolute;
@@ -528,18 +591,31 @@ h1 {
     top:10px;
     right:10px;
 
-    width:35px;
-    height:35px;
+
+    width:34px;
+    height:34px;
+
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
 
     color:white;
 
-    background:none;
+    background:rgba(10,15,25,0.85);
 
-    border:1px solid white;
+    border:1px solid rgba(255,255,255,0.6);
+
 
     font-size:22px;
 
+    font-family:"Sarpanch", sans-serif;
+
+
     cursor:pointer;
+
+    padding:0;
 
 }
 
@@ -552,6 +628,8 @@ h1 {
 
 }
 
+
+/* WARNING TEXT */
 
 .warning-box h2 {
 
