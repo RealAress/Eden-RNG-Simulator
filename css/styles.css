@@ -581,7 +581,6 @@ h1 {
 
 }
 
-
 /* CLOSE BUTTON */
 
 .close-warning {
@@ -591,27 +590,24 @@ h1 {
     top:10px;
     right:10px;
 
-
-    width:34px;
-    height:34px;
-
+    width:30px;
+    height:30px;
 
     display:flex;
     justify-content:center;
     align-items:center;
 
-
     color:white;
 
-    background:rgba(10,15,25,0.85);
+    background:transparent;
 
-    border:1px solid rgba(255,255,255,0.6);
+    border:none;
 
-
-    font-size:22px;
+    font-size:28px;
 
     font-family:"Sarpanch", sans-serif;
 
+    font-weight:700;
 
     cursor:pointer;
 
@@ -619,15 +615,13 @@ h1 {
 
 }
 
-
 .close-warning:hover {
 
-    background:white;
+    color:#aaa;
 
-    color:black;
+    background:transparent;
 
 }
-
 
 /* WARNING TEXT */
 
