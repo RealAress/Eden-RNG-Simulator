@@ -263,7 +263,7 @@ h1 {
 /* LEFT UI */
 .left-ui {
     display:flex;
-    flex-direction:column;
+    flex-direction:row;
     align-items:center;
     gap:20px;
 }
@@ -645,7 +645,7 @@ h1 {
 /* EXTRA SPEED WINDOW */
 
 .extra-speed {
-    width:350px;
+    width:320px;
     padding:20px;
     text-align:center;
     background:rgba(10,15,25,0.9);
@@ -662,9 +662,9 @@ h1 {
 
 .extra-speed-buttons {
     display:grid;
-    grid-template-columns:repeat(2, 1fr);
-    gap:12px;
-    justify-items:center;
+    grid-template-columns:repeat(2, 80px);
+    justify-content:center;
+    gap:15px;
 }
 
 .extra-speed .speed-btn {
