@@ -669,9 +669,9 @@ h1 {
 
 .extra-speed-buttons {
     display:grid;
-    grid-template-columns:repeat(2, 80px);
+    grid-template-columns:repeat(2, 90px);
     justify-content:center;
-    gap:15px;
+    gap:15px 20px;
 }
 
 .extra-speed .speed-btn {
