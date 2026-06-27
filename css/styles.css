@@ -641,3 +641,58 @@ h1 {
     line-height:1.5;
 
 }
+
+/* EXTRA SPEED WINDOW */
+
+.extra-speed {
+
+    position:absolute;
+
+    bottom:20px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    width:360px;
+
+    padding:20px;
+
+    text-align:center;
+
+    z-index:20;
+
+}
+
+
+.extra-title {
+
+    font-size:16px;
+
+    letter-spacing:4px;
+
+    margin-bottom:15px;
+
+    opacity:0.8;
+
+}
+
+
+.extra-speed-buttons {
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:12px;
+
+}
+
+
+.extra-speed .speed-btn {
+
+    width:90px;
+
+    height:55px;
+
+}
