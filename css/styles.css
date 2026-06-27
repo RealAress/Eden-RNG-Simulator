@@ -649,8 +649,8 @@ h1 {
 .left-column {
     display:flex;
     flex-direction:row;
-    align-items:flex-start;
     gap:20px;
+    align-items:flex-start;
 }
 
 /* Speed Options */
