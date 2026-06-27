@@ -645,36 +645,34 @@ h1 {
 /* EXTRA SPEED WINDOW */
 
 .extra-speed {
-
-    position:absolute;
+    position:fixed;
 
     bottom:20px;
-
     left:50%;
-
     transform:translateX(-50%);
 
     width:360px;
 
     padding:20px;
 
+    z-index:50;
+
     text-align:center;
 
-    z-index:20;
+    background:rgba(10,15,25,0.9);
+    border:1px solid rgba(255,255,255,0.6);
 
+    box-shadow:0 0 25px black;
 }
 
 
 .extra-title {
-
-    font-size:16px;
+    font-size:18px;
+    font-weight:800;
 
     letter-spacing:4px;
 
     margin-bottom:15px;
-
-    opacity:0.8;
-
 }
 
 
@@ -689,10 +687,9 @@ h1 {
 }
 
 
-.extra-speed .speed-btn {
+.extra-speed-buttons .speed-btn {
 
     width:90px;
-
-    height:55px;
+    height:50px;
 
 }
