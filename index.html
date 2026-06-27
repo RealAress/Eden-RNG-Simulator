@@ -95,72 +95,70 @@
 
         </div> <!-- CLOSE calculator panel -->
 
-        <a href="https://discord.gg/ruinsvb"
-           target="_blank"
-           rel="noopener"
-           class="discord-btn">
+            <!-- EXTRA SPEED WINDOW -->
 
-        <img src="assets/discordicon.png" class="discord-icon" alt="Discord">
+        <div class="panel extra-speed">
 
-        <div class="discord-text">
-            JOIN OUR SERVER!
+        <div class="corner tl"></div>
+        <div class="corner tr"></div>
+        <div class="corner bl"></div>
+        <div class="corner br"></div>
+
+        <div class="extra-title">
+        SPEED OPTIONS
         </div>
 
-        <div class="btn-corner tl"></div>
-        <div class="btn-corner tr"></div>
-        <div class="btn-corner bl"></div>
-        <div class="btn-corner br"></div>
+        <div class="extra-speed-buttons">
 
-        </a>
+        <button class="speed-btn active" onclick="setSpeed(1,this)">
+        1X<br>SPEED
+        </button>
 
-    </div>
+        <button class="speed-btn" onclick="setSpeed(2,this)">
+        2X<br>SPEED
+        </button>
+
+        <button class="speed-btn" onclick="setSpeed(5,this)">
+        5X<br>SPEED
+        </button>
+
+        <button class="speed-btn" onclick="setSpeed(10,this)">
+        10X<br>SPEED
+        </button>
+
+        <button class="speed-btn" onclick="setSpeed(25,this)">
+        25X<br>SPEED
+        </button>
+
+        <button class="speed-btn" onclick="setSpeed(50,this)">
+        50X<br>SPEED
+        </button>
+
+        <button class="speed-btn" onclick="setSpeed(100,this)">
+        100X<br>SPEED
+        </button>
         
-    <!-- EXTRA SPEED WINDOW -->
+        </div>
 
-    <div class="panel extra-speed">
-
-    <div class="corner tl"></div>
-    <div class="corner tr"></div>
-    <div class="corner bl"></div>
-    <div class="corner br"></div>
-
-    <div class="extra-title">
-    SPEED OPTIONS
     </div>
 
-    <div class="extra-speed-buttons">
+    <a href="https://discord.gg/ruinsvb"
+    target="_blank"
+    rel="noopener"
+    class="discord-btn">
 
-    <button class="speed-btn active" onclick="setSpeed(1,this)">
-    1X<br>SPEED
-    </button>
+    <img src="assets/discordicon.png" class="discord-icon" alt="Discord">
 
-    <button class="speed-btn" onclick="setSpeed(2,this)">
-    2X<br>SPEED
-    </button>
-
-    <button class="speed-btn" onclick="setSpeed(5,this)">
-    5X<br>SPEED
-    </button>
-
-    <button class="speed-btn" onclick="setSpeed(10,this)">
-    10X<br>SPEED
-    </button>
-
-    <button class="speed-btn" onclick="setSpeed(25,this)">
-    25X<br>SPEED
-    </button>
-
-    <button class="speed-btn" onclick="setSpeed(50,this)">
-    50X<br>SPEED
-    </button>
-
-    <button class="speed-btn" onclick="setSpeed(100,this)">
-    100X<br>SPEED
-    </button>
-        
+    <div class="discord-text">
+        JOIN OUR SERVER!
     </div>
 
-</div>
+    <div class="btn-corner tl"></div>
+    <div class="btn-corner tr"></div>
+    <div class="btn-corner bl"></div>
+    <div class="btn-corner br"></div>
+
+    </a>
     
 <div class="panel" id="game">
 
@@ -193,7 +191,7 @@ ROLL EVERY 2 MINUTES
 <div class="corner bl"></div>
 <div class="corner br"></div>
 
-<h2>📜 RNG LOG</h2>
+<h2>RNG LOG</h2>
 <div id="log"></div>
 
 </div>
