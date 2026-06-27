@@ -260,26 +260,6 @@ h1 {
     font-size:12px;
 }
 
-/* LEFT UI */
-.left-ui {
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    gap:20px;
-}
-
-.left-column {
-    display:flex;
-    flex-direction:row;
-    align-items:flex-start;
-    gap:20px;
-}
-
-.discord-btn {
-    margin-top:0;
-    margin-right:220px;
-}
-
 /* DISCORD SERVER BUTTON */
 .discord-btn {
     width:180px;
@@ -645,7 +625,6 @@ h1 {
 
 }
 
-
 .warning-box p {
 
     opacity:0.8;
@@ -654,8 +633,27 @@ h1 {
 
 }
 
-/* EXTRA SPEED WINDOW */
+/* LEFT SIDE AREA */
+.left-ui {
+    position:absolute;
+    left:80px;
+    top:50%;
+    transform:translateY(-50%);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:20px;
+}
 
+/* Calculator + Speed side by side */
+.left-column {
+    display:flex;
+    flex-direction:row;
+    align-items:flex-start;
+    gap:20px;
+}
+
+/* Speed Options */
 .extra-speed {
     width:320px;
     padding:20px;
@@ -665,21 +663,14 @@ h1 {
     box-shadow:0 0 25px black;
 }
 
-.extra-title {
-    font-size:18px;
-    font-weight:800;
-    letter-spacing:4px;
-    margin-bottom:15px;
-}
-
 .extra-speed-buttons {
     display:grid;
-    grid-template-columns:repeat(2, 85px);
+    grid-template-columns:85px 85px;
     justify-content:center;
-    gap:15px 20px;
+    gap:15px 25px;
 }
 
-.extra-speed .speed-btn {
+.extra-speed-buttons .speed-btn {
     width:85px;
     height:55px;
 }
@@ -687,4 +678,9 @@ h1 {
 .extra-speed-buttons .speed-btn:last-child {
     grid-column:1 / 3;
     justify-self:center;
+}
+
+/* Discord under calculator */
+.discord-btn {
+    margin-top:0;
 }
